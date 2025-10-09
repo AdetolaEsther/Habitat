@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { Satisfy } from "next/font/google";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const satisfy = Satisfy({
     subsets: ["latin"],
@@ -9,6 +11,13 @@ const satisfy = Satisfy({
 });
 export default function Home() {
   
+const router = useRouter();
+
+useEffect(() => {
+    const timer = setTimeout(() => router.push("/welcome"), 5000);
+    return () => clearTimeout(timer);
+}, [router]);
+
 
     return (
         <Box
@@ -96,30 +105,6 @@ export default function Home() {
                         mixBlendMode: "soft-light",
                     }}
                 />
-            </motion.div>
-
-            {/* Button */}
-            <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-            >
-                <Button
-                    variant="contained"
-                    sx={{
-                        backgroundColor: "#F29CA3",
-                        color: "#fff",
-                        borderRadius: "2rem",
-                        px: 4,
-                        py: 1.2,
-                        textTransform: "none",
-                        fontSize: "1rem",
-                        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-                        "&:hover": { backgroundColor: "#005bb5" },
-                    }}
-                >
-                    Start Now
-                </Button>
             </motion.div>
         </Box>
     );

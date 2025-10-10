@@ -89,50 +89,168 @@
             }
         },
 
+{
+    "id": "u003",
+    "firstname": "Amara",
+    "lastname": "Johnson",
+    "username": "amara_reads",
+    "email": "amara.j@example.com",
+    "password": "AmaraReads#19",
+    "habits": [
         {
-            "id": "u003",
-            "firstname": "Amara",
-            "lastname": "Johnson",
-            "username": "amara_reads",
-            "email": "amara.j@example.com",
-            "password": "AmaraReads#19",
-            "habits": [
-                {
-                    "id": "h201",
-                    "name": "Write journal",
-                    "status": "active",
-                    "category": "Personal Growth",
-                    "frequency": 7,
-                    "times": ["09:00 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-09-29", "count": 1 },
-                        { "dateTime": "2025-09-30", "count": 1 },
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 }
-                    ]
-                },
-                {
-                    "id": "h202",
-                    "name": "Drink 2L water",
-                    "status": "paused",
-                    "category": "Health",
-                    "frequency": 7,
-                    "times": ["10:00 AM", "02:00 PM", "07:00 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-01", "count": 0 },
-                        { "dateTime": "2025-10-02", "count": 0 }
-                    ]
-                }
-            ],
-            "settings": {
-                "penalty": { "enabled": true, "punishmentAfter": "48 hours" },
-                "notification": { "enabled": false }
-            }
+            "id": "h201",
+            "name": "Write journal",
+            "status": "active",
+            "category": "Personal Growth",
+            "frequency": 7,
+            "times": ["09:00 PM"],
+            "completionProgress": [
+                { "dateTime": "2025-09-18", "count": 1 },
+                { "dateTime": "2025-09-19", "count": 1 },
+                { "dateTime": "2025-09-20", "count": 1 },
+                { "dateTime": "2025-09-21", "count": 1 },
+                { "dateTime": "2025-09-22", "count": 1 },
+                { "dateTime": "2025-09-23", "count": 1 },
+                { "dateTime": "2025-09-24", "count": 1 },
+                { "dateTime": "2025-09-25", "count": 1 },
+                { "dateTime": "2025-09-26", "count": 1 },
+                { "dateTime": "2025-09-27", "count": 1 },
+                { "dateTime": "2025-09-28", "count": 1 },
+                { "dateTime": "2025-09-29", "count": 1 },
+                { "dateTime": "2025-09-30", "count": 1 },
+                { "dateTime": "2025-10-01", "count": 1 },
+                { "dateTime": "2025-10-02", "count": 1 },
+                { "dateTime": "2025-10-03", "count": 1 },
+                { "dateTime": "2025-10-04", "count": 1 },
+                { "dateTime": "2025-10-05", "count": 1 },
+                { "dateTime": "2025-10-06", "count": 1 },
+                { "dateTime": "2025-10-07", "count": 1 },
+                { "dateTime": "2025-10-08", "count": 1 }
+            ]
         },
-
         {
+            "id": "h202",
+            "name": "Drink 2L water",
+            "status": "active",
+            "category": "Health",
+            "frequency": 7,
+            "times": ["10:00 AM", "02:00 PM", "07:00 PM"],
+            "completionProgress": [
+                { "dateTime": "2025-09-18", "count": 1 },
+                { "dateTime": "2025-09-19", "count": 1 },
+                { "dateTime": "2025-09-20", "count": 1 },
+                { "dateTime": "2025-09-21", "count": 1 },
+                { "dateTime": "2025-09-22", "count": 1 },
+                { "dateTime": "2025-09-23", "count": 1 },
+                { "dateTime": "2025-09-24", "count": 1 },
+                { "dateTime": "2025-09-25", "count": 1 },
+                { "dateTime": "2025-09-26", "count": 1 },
+                { "dateTime": "2025-09-27", "count": 1 },
+                { "dateTime": "2025-09-28", "count": 1 },
+                { "dateTime": "2025-09-29", "count": 1 },
+                { "dateTime": "2025-09-30", "count": 1 },
+                { "dateTime": "2025-10-01", "count": 1 },
+                { "dateTime": "2025-10-02", "count": 1 },
+                { "dateTime": "2025-10-03", "count": 1 },
+                { "dateTime": "2025-10-04", "count": 1 },
+                { "dateTime": "2025-10-05", "count": 1 },
+                { "dateTime": "2025-10-06", "count": 1 },
+                { "dateTime": "2025-10-07", "count": 1 },
+                { "dateTime": "2025-10-08", "count": 1 }
+            ]
+        },
+        {
+            "id": "h203",
+            "name": "Stretch for 10 mins",
+            "status": "active",
+            "category": "Fitness",
+            "frequency": 7,
+            "times": ["07:00 AM"],
+            "completionProgress": [
+                { "dateTime": "2025-09-18", "count": 1 },
+                { "dateTime": "2025-09-19", "count": 0 },
+                { "dateTime": "2025-09-20", "count": 1 },
+                { "dateTime": "2025-09-21", "count": 1 },
+                { "dateTime": "2025-09-22", "count": 1 },
+                { "dateTime": "2025-09-23", "count": 0 },
+                { "dateTime": "2025-09-24", "count": 1 },
+                { "dateTime": "2025-09-25", "count": 1 },
+                { "dateTime": "2025-09-26", "count": 1 },
+                { "dateTime": "2025-09-27", "count": 1 },
+                { "dateTime": "2025-09-28", "count": 1 },
+                { "dateTime": "2025-09-29", "count": 1 },
+                { "dateTime": "2025-09-30", "count": 0 },
+                { "dateTime": "2025-10-01", "count": 1 },
+                { "dateTime": "2025-10-02", "count": 1 },
+                { "dateTime": "2025-10-03", "count": 1 },
+                { "dateTime": "2025-10-04", "count": 1 },
+                { "dateTime": "2025-10-05", "count": 1 },
+                { "dateTime": "2025-10-06", "count": 1 },
+                { "dateTime": "2025-10-07", "count": 1 },
+                { "dateTime": "2025-10-08", "count": 1 }
+            ]
+        },
+        {
+            "id": "h204",
+            "name": "Read 20 pages",
+            "status": "active",
+            "category": "Personal Growth",
+            "frequency": 7,
+            "times": ["08:00 PM"],
+            "completionProgress": [
+                { "dateTime": "2025-10-01", "count": 1 },
+                { "dateTime": "2025-10-02", "count": 1 },
+                { "dateTime": "2025-10-03", "count": 1 },
+                { "dateTime": "2025-10-04", "count": 1 },
+                { "dateTime": "2025-10-05", "count": 1 },
+                { "dateTime": "2025-10-06", "count": 1 },
+                { "dateTime": "2025-10-07", "count": 0 },
+                { "dateTime": "2025-10-08", "count": 1 }
+            ]
+        },
+        {
+            "id": "h205",
+            "name": "Meditate 10 mins",
+            "status": "active",
+            "category": "Mindfulness",
+            "frequency": 7,
+            "times": ["06:30 AM"],
+            "completionProgress": [
+                { "dateTime": "2025-10-01", "count": 1 },
+                { "dateTime": "2025-10-02", "count": 1 },
+                { "dateTime": "2025-10-03", "count": 0 },
+                { "dateTime": "2025-10-04", "count": 1 },
+                { "dateTime": "2025-10-05", "count": 0 },
+                { "dateTime": "2025-10-06", "count": 1 },
+                { "dateTime": "2025-10-07", "count": 0 },
+                { "dateTime": "2025-10-08", "count": 1 }
+            ]
+        },
+        {
+            "id": "h206",
+            "name": "No social media after 9PM",
+            "status": "active",
+            "category": "Discipline",
+            "frequency": 7,
+            "times": ["09:00 PM"],
+            "completionProgress": [
+                { "dateTime": "2025-10-01", "count": 1 },
+                { "dateTime": "2025-10-02", "count": 1 },
+                { "dateTime": "2025-10-03", "count": 1 },
+                { "dateTime": "2025-10-04", "count": 1 },
+                { "dateTime": "2025-10-05", "count": 1 },
+                { "dateTime": "2025-10-06", "count": 1 },
+                { "dateTime": "2025-10-07", "count": 1 },
+                { "dateTime": "2025-10-08", "count": 1 }
+            ]
+        }
+    ],
+    "settings": {
+        "penalty": { "enabled": true, "punishmentAfter": "48 hours" },
+        "notification": { "enabled": true }
+    }
+}
+,{
             "id": "u004",
             "firstname": "Leo",
             "lastname": "Musa",

@@ -12,23 +12,26 @@ export default function Welcome() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = (e: React.FormEvent) => {
- e.preventDefault();
+  const handleLogin = (e: React.FormEvent) => {
+      e.preventDefault();
+      const allUsers = usersData.users?.[0] || [];
+      // Find the matching user
+      const foundUser = allUsers.find(
+          (u) => u.email === email && u.password === password
+      );
+      if (!foundUser) {
+          toast.error("Incorrect username or password 😢");
+          return;
+      }
+      //Destructure from foundUser and save user in localStorage
+      const { password: _, ...safeUser } = foundUser;
+      localStorage.setItem("loggedInUser", JSON.stringify(safeUser));
 
-    const allUsers = usersData.users?.[0] || [];
-    const foundUser = allUsers.find(
-        (u) => u.email === email && u.password === password
-    );
-
-    if (foundUser) {
       toast.success(`Welcome back, ${foundUser.firstname}!`);
-    } else {
-      toast.error("Incorrect username or password 😢");
-    }     
-        setTimeout(() => {
-            router.push("/dashboard");
-        }, 1000);
-    };
+      setTimeout(() => {
+          router.push("/dashboard");
+      }, 1000);
+  };
 
     return (
         <Box

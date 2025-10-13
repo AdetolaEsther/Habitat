@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { Satisfy } from "next/font/google";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+
 
 const satisfy = Satisfy({
     subsets: ["latin"],
@@ -53,7 +54,7 @@ useEffect(() => {
                     Habitat
                 </Typography>
             </motion.div>
-            {/* Subtitle */}
+           
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -70,7 +71,8 @@ useEffect(() => {
                     Tiny Habits, Beautiful Life{" "}
                 </Typography>
             </motion.div>
-            {/* Image */}
+          
+          
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -78,31 +80,21 @@ useEffect(() => {
                 style={{
                     position: "relative",
                     width: "80%",
-                    maxWidth: 500,
+                    maxWidth: 900,
                     marginBottom: "1.5rem",
                     borderRadius: "1rem",
                     overflow: "hidden",
                 }}
             >
                 <Image
-                    src="/4871715.jpg"
+                    src="/image 2.png"
                     alt="Habitat illustration"
-                    width={400}
-                    height={400}
+                    width={800}
+                    height={800}
                     style={{
                         width: "100%",
                         height: "auto",
                         borderRadius: "1rem",
-                        filter: "brightness(0.95) saturate(1.1)", // makes colors richer
-                    }}
-                />
-                <Box
-                    sx={{
-                        position: "absolute",
-                        inset: 0,
-                        background:
-                            "linear-gradient(180deg, rgba(245,179,184,0.25), rgba(177,117,150,0.25))", // pink overlay
-                        mixBlendMode: "soft-light",
                     }}
                 />
             </motion.div>

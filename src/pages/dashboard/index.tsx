@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import DateStrip from "@/shared/datesrtip";
 import { User } from "@/data/userType";
 import { motion } from "framer-motion";
+import Layout from "@/components/layout";
 
 
 export default function Dashboard() {
@@ -85,167 +86,189 @@ const total = activeHabits.length;
 
     console.log(user, "user");
     return (
-        <Box
-            sx={{
-                minHeight: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                px: 1,
-                py: 2,
-            }}
-        >
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-                <Avatar
-                    alt={user.firstname || "User"}
-                    src="/avatar.png"
-                    sx={{ bgcolor: "#F29CA3", width: 50, height: 50 }}
-                />
-                <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 600, color: "#B17596" }}
-                >
-                    {greeting}, {user.firstname || "Friend"} 👋
-                </Typography>
-            </Box>
-
+        <Layout>
             <Box
                 sx={{
-                    borderRadius: 3,
-                    p: 2,
-                    mb: 3,
+                    minHeight: "100vh",
+                    display: "flex",
+                    flexDirection: "column",
+                    px: 1,
+                    py: 2,
                 }}
             >
-                <Typography sx={{ color: "#A1879E", mb: 1 }}>
-                    Calendar
-                </Typography>
-                <DateStrip />
-            </Box>
-
-            <Box
-                sx={{
-                    backgroundColor: "#FFFFFF",
-                    borderRadius: 3,
-                    p: 2,
-                    mb: 2,
-                    boxShadow: "0px 4px 8px rgba(0,0,0,0.05)",
-                }}
-            >
-                <Typography sx={{ color: "#A1879E", mb: 2 }}>
-                    Today's Progress
-                </Typography>
                 <Box
                     sx={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "space-between",
+                        gap: 2,
+                        mb: 2,
                     }}
                 >
-                    <Box sx={{ position: "relative", display: "inline-flex" }}>
-                        <motion.div
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
-                            style={{
+                    <Avatar
+                        alt={user.firstname || "User"}
+                        src="/avatar.png"
+                        sx={{ bgcolor: "#F29CA3", width: 50, height: 50 }}
+                    />
+                    <Typography
+                        variant="h6"
+                        sx={{ fontWeight: 600, color: "#B17596" }}
+                    >
+                        {greeting}, {user.firstname || "Friend"} 👋
+                    </Typography>
+                </Box>
+
+                <Box
+                    sx={{
+                        borderRadius: 3,
+                        p: 2,
+                        mb: 3,
+                    }}
+                >
+                    <Typography sx={{ color: "#A1879E", mb: 1 }}>
+                        Calendar
+                    </Typography>
+                    <DateStrip />
+                </Box>
+
+                <Box
+                    sx={{
+                        backgroundColor: "#FFFFFF",
+                        borderRadius: 3,
+                        p: 2,
+                        mb: 2,
+                        boxShadow: "0px 4px 8px rgba(0,0,0,0.05)",
+                    }}
+                >
+                    <Typography sx={{ color: "#A1879E", mb: 2 }}>
+                        Today's Progress
+                    </Typography>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <Box
+                            sx={{
                                 position: "relative",
                                 display: "inline-flex",
                             }}
                         >
-                            
-                            <svg width="80" height="80" viewBox="0 0 80 80">
-                                <defs>
-                                    <linearGradient
-                                        id="progressGradient"
-                                        x1="1"
-                                        y1="0"
-                                        x2="0"
-                                        y2="1"
-                                    >
-                                        <stop offset="0%" stopColor="#B17596" />
-                                        <stop
-                                            offset="100%"
-                                            stopColor="#F5B3B8"
-                                        />
-                                    </linearGradient>
-                                </defs>
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
+                                style={{
+                                    position: "relative",
+                                    display: "inline-flex",
+                                }}
+                            >
+                                <svg width="80" height="80" viewBox="0 0 80 80">
+                                    <defs>
+                                        <linearGradient
+                                            id="progressGradient"
+                                            x1="1"
+                                            y1="0"
+                                            x2="0"
+                                            y2="1"
+                                        >
+                                            <stop
+                                                offset="0%"
+                                                stopColor="#B17596"
+                                            />
+                                            <stop
+                                                offset="100%"
+                                                stopColor="#F5B3B8"
+                                            />
+                                        </linearGradient>
+                                    </defs>
 
-                                <circle
-                                    cx="40"
-                                    cy="40"
-                                    r="35"
-                                    stroke="#f1f1f1"
-                                    strokeWidth="8"
-                                    fill="none"
-                                />
-                                <motion.circle
-                                    cx="40"
-                                    cy="40"
-                                    r="35"
-                                    stroke="url(#progressGradient)"
-                                    strokeWidth="8"
-                                    fill="none"
-                                    strokeLinecap="round"
-                                    strokeDasharray={2 * Math.PI * 35}
-                                    strokeDashoffset={
-                                        2 * Math.PI * 35 * (1 - progress / 100)
-                                    }
-                                    initial={{
-                                        strokeDashoffset: 2 * Math.PI * 35,
-                                    }}
-                                    animate={{
-                                        strokeDashoffset:
+                                    <circle
+                                        cx="40"
+                                        cy="40"
+                                        r="35"
+                                        stroke="#f1f1f1"
+                                        strokeWidth="8"
+                                        fill="none"
+                                    />
+                                    <motion.circle
+                                        cx="40"
+                                        cy="40"
+                                        r="35"
+                                        stroke="url(#progressGradient)"
+                                        strokeWidth="8"
+                                        fill="none"
+                                        strokeLinecap="round"
+                                        strokeDasharray={2 * Math.PI * 35}
+                                        strokeDashoffset={
                                             2 *
                                             Math.PI *
                                             35 *
-                                            (1 - progress / 100),
-                                    }}
-                                    transition={{
-                                        duration: 1,
-                                        ease: "easeOut",
-                                    }}
-                                />
-                            </svg>
+                                            (1 - progress / 100)
+                                        }
+                                        initial={{
+                                            strokeDashoffset: 2 * Math.PI * 35,
+                                        }}
+                                        animate={{
+                                            strokeDashoffset:
+                                                2 *
+                                                Math.PI *
+                                                35 *
+                                                (1 - progress / 100),
+                                        }}
+                                        transition={{
+                                            duration: 1,
+                                            ease: "easeOut",
+                                        }}
+                                    />
+                                </svg>
 
-                            
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: 0,
-                                    left: 0,
-                                    width: "100%",
-                                    height: "100%",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
-                                <Typography
-                                    variant="caption"
+                                <Box
                                     sx={{
-                                        fontWeight: 600,
-                                        color: "#B17596",
-                                        fontSize: "0.9rem",
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        width: "100%",
+                                        height: "100%",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
                                     }}
                                 >
-                                    {progress}%
-                                </Typography>
-                            </Box>
+                                    <Typography
+                                        variant="caption"
+                                        sx={{
+                                            fontWeight: 600,
+                                            color: "#B17596",
+                                            fontSize: "0.9rem",
+                                        }}
+                                    >
+                                        {progress}%
+                                    </Typography>
+                                </Box>
+                            </motion.div>
+                        </Box>
+
+                        <motion.div
+                            initial={{ x: 20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.3, duration: 0.6 }}
+                        >
+                            <Typography
+                                sx={{ color: "#D2899D", fontWeight: 600 }}
+                            >
+                                Streak: {streak} days 🔥
+                            </Typography>
+                            <Typography
+                                sx={{ color: "#D2899D", fontWeight: 600 }}
+                            >
+                                Habits: {total} active
+                            </Typography>
                         </motion.div>
                     </Box>
-
-                    <motion.div
-                        initial={{ x: 20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
-                    >
-                        <Typography sx={{ color: "#D2899D", fontWeight: 600 }}>
-                            Streak: {streak} days 🔥
-                        </Typography>
-                        <Typography sx={{ color: "#D2899D", fontWeight: 600 }}>
-                            Habits: {total} active
-                        </Typography>
-                    </motion.div>
                 </Box>
             </Box>
-        </Box>
+        </Layout>
     );
 }

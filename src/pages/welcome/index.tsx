@@ -14,7 +14,7 @@ export default function Welcome() {
 
   const handleLogin = (e: React.FormEvent) => {
       e.preventDefault();
-      const allUsers = usersData.users?.[0] || [];
+      const allUsers = usersData.users || [];
       // Find the matching user
       const foundUser = allUsers.find(
           (u) => u.email === email && u.password === password
@@ -23,8 +23,9 @@ export default function Welcome() {
           toast.error("Incorrect username or password 😢");
           return;
       }
+      
       //Destructure from foundUser and save user in localStorage
-      const { password: _, ...safeUser } = foundUser;
+      const  { password: _, ...safeUser } = foundUser;
       localStorage.setItem("loggedInUser", JSON.stringify(safeUser));
 
       toast.success(`Welcome back, ${foundUser.firstname}!`);

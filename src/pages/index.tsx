@@ -14,10 +14,10 @@ export default function Home() {
   
 const router = useRouter();
 
-// useEffect(() => {
-//     const timer = setTimeout(() => router.push("/welcome"), 5000);
-//     return () => clearTimeout(timer);
-// }, [router]);
+useEffect(() => {
+    const timer = setTimeout(() => router.push("/welcome"), 5000);
+    return () => clearTimeout(timer);
+}, [router]);
 
 
     return (

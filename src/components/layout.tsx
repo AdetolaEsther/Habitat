@@ -23,16 +23,14 @@ export default function Layout({ children }: LayoutProps) {
                 py: 2,
             }}
         >
-           
             <Box sx={{ flex: 1, pb: 10 }}>{children}</Box>
 
-          
             <Box
                 sx={{
                     display: "flex",
                     justifyContent: "space-around",
                     alignItems: "center",
-                    backgroundColor: "#FFFFFF",
+                    backgroundColor: "#FFF8F8",
                     borderRadius: "20px",
                     p: 1.5,
                     boxShadow: "0px -4px 8px rgba(0,0,0,0.05)",
@@ -45,7 +43,6 @@ export default function Layout({ children }: LayoutProps) {
                     zIndex: 1000,
                 }}
             >
-                {/* Home */}
                 <Link href="/dashboard" passHref>
                     <Icon
                         icon="solar:home-angle-bold"
@@ -53,42 +50,23 @@ export default function Layout({ children }: LayoutProps) {
                         height="26"
                         color={
                             router.pathname === "/dashboard"
-                                ? "#B17596"
+                                ? "#3E6259"
                                 : "#B9B9B9"
                         }
                     />
                 </Link>
 
-                {/* Add Button (Center) */}
                 <Link href="/add" passHref>
-                    <Box
-                        sx={{
-                            backgroundColor: "#B17596",
-                            borderRadius: "50%",
-                            width: 55,
-                            height: 55,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            boxShadow: "0px 4px 12px rgba(177, 117, 150, 0.4)",
-                            transform: "translateY(-15%)",
-                            cursor: "pointer",
-                            transition: "0.2s ease",
-                            "&:hover": {
-                                transform: "translateY(-20%) scale(1.05)",
-                            },
-                        }}
-                    >
-                        <Icon
-                            icon="solar:add-circle-line-duotone"
-                            width="32"
-                            height="32"
-                            color="#FFFFFF"
-                        />
-                    </Box>
+                    <Icon
+                        icon="solar:add-circle-line-duotone"
+                        width="32"
+                        height="32"
+                        color={
+                            router.pathname === "/add" ? "#3E6259" : "#B9B9B9"
+                        }
+                    />
                 </Link>
 
-                {/* Profile */}
                 <Link href="/profile" passHref>
                     <Icon
                         icon="solar:user-circle-bold"
@@ -96,7 +74,19 @@ export default function Layout({ children }: LayoutProps) {
                         height="26"
                         color={
                             router.pathname === "/profile"
-                                ? "#B17596"
+                                ? "#3E6259"
+                                : "#B9B9B9"
+                        }
+                    />
+                </Link>
+                <Link href="/explore" passHref>
+                    <Icon
+                        icon="ix:explore"
+                        width="26"
+                        height="26"
+                        color={
+                            router.pathname === "/explore"
+                                ? "#3E6259"
                                 : "#B9B9B9"
                         }
                     />

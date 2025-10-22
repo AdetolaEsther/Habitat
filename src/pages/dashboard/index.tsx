@@ -5,32 +5,33 @@ import DateStrip from "@/shared/datesrtip";
 import { User } from "@/data/userType";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout";
-
+import OverdueCardList from "@/components/OverdueCard";
+import ActiveCardList from "@/components/ActiveCard";
+import Explore from "@/components/Explore";
 
 export default function Dashboard() {
     const [user, setUser] = useState<User | null>(null);
     const hour = dayjs().hour();
-
     const greeting =
         hour < 12
             ? "Good Morning"
             : hour < 18
             ? "Good Afternoon"
             : "Good Evening";
-const today = dayjs().format("YYYY-MM-DD");
-const activeHabits =
-    user?.habits.filter((h: any) => h.status === "active") || [];
-const total = activeHabits.length;
 
-    // Instead of matching to "today", pick the *most recent* date in the user's data
-    const allDates = activeHabits.flatMap((h: any) =>
-        h.completionProgress.map((p: any) => p.dateTime)
-    );
+const Habits = user?.habits?.activeHabits || [];
+
+    const total = Habits.length;
+
+    const allDates =
+        Habits?.flatMap(
+            (h: any) => h?.completionProgress?.map((p: any) => p.dateTime) || []
+        ) || [];
+
     const latestDate = allDates.length > 0 ? allDates.sort().pop() : null;
 
-    // Count habits completed on that latest date
-    const completedOnLatest = activeHabits.filter((h: any) => {
-        const entry = h.completionProgress.find(
+    const completedOnLatest = (Habits ?? []).filter((h: any) => {
+        const entry = (h?.completionProgress ?? []).find(
             (p: any) => p.dateTime === latestDate
         );
         return entry && entry.count > 0;
@@ -39,27 +40,27 @@ const total = activeHabits.length;
     const progress =
         total === 0 ? 0 : Math.round((completedOnLatest / total) * 100);
 
-    // Calculate longest streak based on consecutive completion days
     const calculateStreak = (habit: any) => {
+        const progressList = habit?.completionProgress ?? [];
         let streak = 0;
-        const sortedProgress = [...habit.completionProgress].sort((a, b) =>
+
+        const sortedProgress = [...progressList].sort((a, b) =>
             dayjs(a.dateTime).diff(dayjs(b.dateTime))
         );
 
         for (let i = sortedProgress.length - 1; i >= 0; i--) {
             const current = sortedProgress[i];
             const previous = sortedProgress[i - 1];
+
             if (current.count > 0) {
                 streak++;
-                if (
-                    previous &&
-                    dayjs(current.dateTime).diff(
-                        dayjs(previous.dateTime),
-                        "day"
-                    ) > 1
-                ) {
-                    break;
-                }
+                const gap = previous
+                    ? dayjs(current.dateTime).diff(
+                          dayjs(previous.dateTime),
+                          "day"
+                      )
+                    : 0;
+                if (gap > 1) break;
             } else {
                 break;
             }
@@ -68,10 +69,29 @@ const total = activeHabits.length;
         return streak;
     };
 
-    const streak =
-        activeHabits.length > 0
-            ? Math.max(...activeHabits.map((h: any) => calculateStreak(h)))
-            : 0;
+   
+
+    const imageMap: Record<string, string> = {
+        Health: "/62571.jpg",
+        Fitness: "/4846446.jpg",
+        Mindfulness: "/7747195.jpg",
+        Learning: "/7768446.jpg",
+        Productivity: "/4871715.jpg",
+    };
+    
+    const getActiveHabitImage = (habit: any) => {
+        if (!user?.habits) return imageMap["Mindfulness"];
+        const activeHabit = user.habits.activeHabits?.find((h: any) => h.id === habit.id);
+        const category = activeHabit?.category || habit.category?.trim() || "Mindfulness";
+        return imageMap[category] || imageMap["Mindfulness"];
+    };
+const getHabitImage = (habit: any) => {
+    if (!user?.habits) return imageMap["Mindfulness"];
+    const overdueHabit = user.habits.overdueHabits?.find((h: any) => h.id === habit.id);
+    const category = overdueHabit?.category || habit.category?.trim() || "Mindfulness";
+    return imageMap[category] || imageMap["Mindfulness"];
+};
+
 
     useEffect(() => {
         const storedUser = localStorage.getItem("loggedInUser");
@@ -82,7 +102,7 @@ const total = activeHabits.length;
         }
     }, []);
 
-    if (!user) return null;
+    // if (!user) return null;
 
     console.log(user, "user");
     return (
@@ -96,46 +116,81 @@ const total = activeHabits.length;
                     py: 2,
                 }}
             >
-                <Box
-                    sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 2,
-                        mb: 2,
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{
+                        width: "100%",
+                        position: "relative",
+                        overflow: "hidden",
                     }}
                 >
-                    <Avatar
-                        alt={user.firstname || "User"}
-                        src="/avatar.png"
-                        sx={{ bgcolor: "#F29CA3", width: 50, height: 50 }}
+                    <motion.img
+                        src="/freepik_assistant_1760596112435.png"
+                        alt="Assistant"
+                        style={{
+                            width: "100%",
+                            height: "200px",
+                            objectFit: "cover",
+                            transformOrigin: "bottom center",
+                            borderRadius: 16,
+                        }}
+                        animate={{
+                            y: [0, -8, 0],
+                            rotate: [0, 1, 0, -1, 0],
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
                     />
-                    <Typography
-                        variant="h6"
-                        sx={{ fontWeight: 600, color: "#B17596" }}
+                    <Box
+                        sx={{
+                            position: "absolute",
+                            top: "55%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            textAlign: "center",
+                        }}
                     >
-                        {greeting}, {user.firstname || "Friend"} 👋
-                    </Typography>
-                </Box>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4, duration: 0.6 }}
+                            style={{
+                                fontSize: "1.6rem",
+                                fontWeight: 700,
+                                color: "#3E6259",
+                            }}
+                        >
+                            {greeting}, {user?.firstname || "Friend"} 👋
+                        </motion.h2>
 
-                <Box
-                    sx={{
-                        borderRadius: 3,
-                        p: 2,
-                        mb: 3,
-                    }}
-                >
-                    <Typography sx={{ color: "#A1879E", mb: 1 }}>
-                        Calendar
-                    </Typography>
-                    <DateStrip />
-                </Box>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.8, duration: 0.6 }}
+                            style={{
+                                fontSize: "0.9rem",
+                                color: "#3E6259",
+                            }}
+                        >
+                            Let’s make today gentle and productive ✨
+                        </motion.p>
+                    </Box>
+                </motion.div>
 
+                <DateStrip />
+                {/* 
                 <Box
                     sx={{
                         backgroundColor: "#FFFFFF",
                         borderRadius: 3,
                         p: 2,
-                        mb: 2,
+                        // mb: 2,
+                        mt: 0,
                         boxShadow: "0px 4px 8px rgba(0,0,0,0.05)",
                     }}
                 >
@@ -155,99 +210,7 @@ const total = activeHabits.length;
                                 display: "inline-flex",
                             }}
                         >
-                            <motion.div
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-                                style={{
-                                    position: "relative",
-                                    display: "inline-flex",
-                                }}
-                            >
-                                <svg width="80" height="80" viewBox="0 0 80 80">
-                                    <defs>
-                                        <linearGradient
-                                            id="progressGradient"
-                                            x1="1"
-                                            y1="0"
-                                            x2="0"
-                                            y2="1"
-                                        >
-                                            <stop
-                                                offset="0%"
-                                                stopColor="#B17596"
-                                            />
-                                            <stop
-                                                offset="100%"
-                                                stopColor="#F5B3B8"
-                                            />
-                                        </linearGradient>
-                                    </defs>
-
-                                    <circle
-                                        cx="40"
-                                        cy="40"
-                                        r="35"
-                                        stroke="#f1f1f1"
-                                        strokeWidth="8"
-                                        fill="none"
-                                    />
-                                    <motion.circle
-                                        cx="40"
-                                        cy="40"
-                                        r="35"
-                                        stroke="url(#progressGradient)"
-                                        strokeWidth="8"
-                                        fill="none"
-                                        strokeLinecap="round"
-                                        strokeDasharray={2 * Math.PI * 35}
-                                        strokeDashoffset={
-                                            2 *
-                                            Math.PI *
-                                            35 *
-                                            (1 - progress / 100)
-                                        }
-                                        initial={{
-                                            strokeDashoffset: 2 * Math.PI * 35,
-                                        }}
-                                        animate={{
-                                            strokeDashoffset:
-                                                2 *
-                                                Math.PI *
-                                                35 *
-                                                (1 - progress / 100),
-                                        }}
-                                        transition={{
-                                            duration: 1,
-                                            ease: "easeOut",
-                                        }}
-                                    />
-                                </svg>
-
-                                <Box
-                                    sx={{
-                                        position: "absolute",
-                                        top: 0,
-                                        left: 0,
-                                        width: "100%",
-                                        height: "100%",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                    }}
-                                >
-                                    <Typography
-                                        variant="caption"
-                                        sx={{
-                                            fontWeight: 600,
-                                            color: "#B17596",
-                                            fontSize: "0.9rem",
-                                        }}
-                                    >
-                                        {progress}%
-                                    </Typography>
-                                </Box>
-                            </motion.div>
+                          
                         </Box>
 
                         <motion.div
@@ -258,15 +221,32 @@ const total = activeHabits.length;
                             <Typography
                                 sx={{ color: "#D2899D", fontWeight: 600 }}
                             >
-                                Streak: {streak} days 🔥
-                            </Typography>
-                            <Typography
-                                sx={{ color: "#D2899D", fontWeight: 600 }}
-                            >
                                 Habits: {total} active
                             </Typography>
                         </motion.div>
                     </Box>
+                </Box> */}
+
+                <Box sx={{ mt: 3 }}>
+                    {user?.habits?.overdueHabits?.length ? (
+                        <ActiveCardList
+                            ActiveCardList={user?.habits?.activeHabits}
+                            getHabitImage={getActiveHabitImage}
+                        />
+                    ) : (
+                        <Explore />
+                    )}
+                </Box>
+
+                <Box sx={{ mt: 4 }}>
+                    {user?.habits?.overdueHabits?.length ? (
+                        <OverdueCardList
+                            overdueHabits={user?.habits.overdueHabits}
+                            getHabitImage={getHabitImage}
+                        />
+                    ) : (
+                        <Explore />
+                    )}
                 </Box>
             </Box>
         </Layout>

@@ -7,38 +7,40 @@
             "username": "tola_habits",
             "email": "tola@example.com",
             "password": "Tola@123",
-            "habits": [
-                {
-                    "id": "h001",
-                    "name": "Morning Meditation",
-                    "status": "active",
-                    "category": "Mindfulness",
-                    "frequency": 7,
-                    "times": ["06:30 AM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 },
-                        { "dateTime": "2025-10-05", "count": 0 },
-                        { "dateTime": "2025-10-06", "count": 1 }
-                    ]
-                },
-                {
-                    "id": "h002",
-                    "name": "Read for 20 mins",
-                    "status": "active",
-                    "category": "Learning",
-                    "frequency": 5,
-                    "times": ["08:00 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 0 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 }
-                    ]
-                }
-            ],
+            "habits": {
+                "activeHabits": [
+                    {
+                        "id": "h001",
+                        "name": "Morning Meditation",
+                        "category": "Mindfulness",
+                        "frequency": 7,
+                        "times": ["06:30 AM"],
+                        "lastCompleted": "2025-10-06",
+                        "streak": 4
+                    },
+                    {
+                        "id": "h002",
+                        "name": "Read for 20 mins",
+                        "category": "Learning",
+                        "frequency": 5,
+                        "times": ["08:00 PM"],
+                        "lastCompleted": "2025-10-04",
+                        "streak": 2
+                    }
+                ],
+                "overdueHabits": [
+                    {
+                        "id": "h001",
+                        "name": "Morning Meditation",
+                        "daysOverdue": 9
+                    },
+                    {
+                        "id": "h002",
+                        "name": "Read for 20 mins",
+                        "daysOverdue": 11
+                    }
+                ]
+            },
             "settings": {
                 "penalty": {
                     "enabled": true,
@@ -47,7 +49,6 @@
                 "notification": { "enabled": true }
             }
         },
-
         {
             "id": "u002",
             "firstname": "James",
@@ -55,42 +56,56 @@
             "username": "jamesfit",
             "email": "james.okoro@example.com",
             "password": "JamesFit!22",
-            "habits": [
-                {
-                    "id": "h101",
-                    "name": "Workout",
-                    "status": "active",
-                    "category": "Fitness",
-                    "frequency": 6,
-                    "times": ["07:00 AM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-09-30", "count": 1 },
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 0 }
-                    ]
-                },
-                {
-                    "id": "h102",
-                    "name": "No sugar day",
-                    "status": "active",
-                    "category": "Health",
-                    "frequency": 4,
-                    "times": [],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 0 }
-                    ]
-                }
-            ],
+            "habits": {
+                "activeHabits": [
+                    {
+                        "id": "h101",
+                        "name": "Workout",
+                        "category": "Fitness",
+                        "frequency": 6,
+                        "times": ["07:00 AM"],
+                        "lastCompleted": "2025-10-04",
+                        "streak": 4,
+                        "completionProgress": [
+                            { "dateTime": "2025-10-13", "count": 1 },
+                            { "dateTime": "2025-10-14", "count": 1 },
+                            { "dateTime": "2025-10-15", "count": 1 }
+                        ]
+
+                    },
+                    {
+                        "id": "h102",
+                        "name": "No sugar day",
+                        "category": "Health",
+                        "frequency": 4,
+                        "times": [],
+                        "lastCompleted": "2025-10-02",
+                        "streak": 2,
+                        "completionProgress": [
+                            { "dateTime": "2025-10-13", "count": 1 },
+                            { "dateTime": "2025-10-14", "count": 1 },
+                            { "dateTime": "2025-10-15", "count": 1 }
+                        ]
+                    }
+                ],
+                "overdueHabits": [
+                    {
+                        "id": "h101",
+                        "name": "Workout",
+                        "daysOverdue": 11
+                    },
+                    {
+                        "id": "h102",
+                        "name": "No sugar day",
+                        "daysOverdue": 13
+                    }
+                ]
+            },
             "settings": {
                 "penalty": { "enabled": false, "punishmentAfter": "" },
                 "notification": { "enabled": true }
             }
         },
-
         {
             "id": "u003",
             "firstname": "Amara",
@@ -98,155 +113,146 @@
             "username": "amara_reads",
             "email": "amara.j@example.com",
             "password": "AmaraReads#19",
-            "habits": [
-                {
-                    "id": "h201",
-                    "name": "Write journal",
-                    "status": "active",
-                    "category": "Personal Growth",
-                    "frequency": 7,
-                    "times": ["09:00 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-09-18", "count": 1 },
-                        { "dateTime": "2025-09-19", "count": 1 },
-                        { "dateTime": "2025-09-20", "count": 1 },
-                        { "dateTime": "2025-09-21", "count": 1 },
-                        { "dateTime": "2025-09-22", "count": 1 },
-                        { "dateTime": "2025-09-23", "count": 1 },
-                        { "dateTime": "2025-09-24", "count": 1 },
-                        { "dateTime": "2025-09-25", "count": 1 },
-                        { "dateTime": "2025-09-26", "count": 1 },
-                        { "dateTime": "2025-09-27", "count": 1 },
-                        { "dateTime": "2025-09-28", "count": 1 },
-                        { "dateTime": "2025-09-29", "count": 1 },
-                        { "dateTime": "2025-09-30", "count": 1 },
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 },
-                        { "dateTime": "2025-10-05", "count": 1 },
-                        { "dateTime": "2025-10-06", "count": 1 },
-                        { "dateTime": "2025-10-07", "count": 1 },
-                        { "dateTime": "2025-10-08", "count": 1 }
-                    ]
-                },
-                {
-                    "id": "h202",
-                    "name": "Drink 2L water",
-                    "status": "active",
-                    "category": "Health",
-                    "frequency": 7,
-                    "times": ["10:00 AM", "02:00 PM", "07:00 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-09-18", "count": 1 },
-                        { "dateTime": "2025-09-19", "count": 1 },
-                        { "dateTime": "2025-09-20", "count": 1 },
-                        { "dateTime": "2025-09-21", "count": 1 },
-                        { "dateTime": "2025-09-22", "count": 1 },
-                        { "dateTime": "2025-09-23", "count": 1 },
-                        { "dateTime": "2025-09-24", "count": 1 },
-                        { "dateTime": "2025-09-25", "count": 1 },
-                        { "dateTime": "2025-09-26", "count": 1 },
-                        { "dateTime": "2025-09-27", "count": 1 },
-                        { "dateTime": "2025-09-28", "count": 1 },
-                        { "dateTime": "2025-09-29", "count": 1 },
-                        { "dateTime": "2025-09-30", "count": 1 },
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 },
-                        { "dateTime": "2025-10-05", "count": 1 },
-                        { "dateTime": "2025-10-06", "count": 1 },
-                        { "dateTime": "2025-10-07", "count": 1 },
-                        { "dateTime": "2025-10-08", "count": 1 }
-                    ]
-                },
-                {
-                    "id": "h203",
-                    "name": "Stretch for 10 mins",
-                    "status": "active",
-                    "category": "Fitness",
-                    "frequency": 7,
-                    "times": ["07:00 AM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-09-18", "count": 1 },
-                        { "dateTime": "2025-09-19", "count": 0 },
-                        { "dateTime": "2025-09-20", "count": 1 },
-                        { "dateTime": "2025-09-21", "count": 1 },
-                        { "dateTime": "2025-09-22", "count": 1 },
-                        { "dateTime": "2025-09-23", "count": 0 },
-                        { "dateTime": "2025-09-24", "count": 1 },
-                        { "dateTime": "2025-09-25", "count": 1 },
-                        { "dateTime": "2025-09-26", "count": 1 },
-                        { "dateTime": "2025-09-27", "count": 1 },
-                        { "dateTime": "2025-09-28", "count": 1 },
-                        { "dateTime": "2025-09-29", "count": 1 },
-                        { "dateTime": "2025-09-30", "count": 0 },
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 },
-                        { "dateTime": "2025-10-05", "count": 1 },
-                        { "dateTime": "2025-10-06", "count": 1 },
-                        { "dateTime": "2025-10-07", "count": 1 },
-                        { "dateTime": "2025-10-08", "count": 1 }
-                    ]
-                },
-                {
-                    "id": "h204",
-                    "name": "Read 20 pages",
-                    "status": "active",
-                    "category": "Personal Growth",
-                    "frequency": 7,
-                    "times": ["08:00 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 },
-                        { "dateTime": "2025-10-05", "count": 1 },
-                        { "dateTime": "2025-10-06", "count": 1 },
-                        { "dateTime": "2025-10-07", "count": 0 },
-                        { "dateTime": "2025-10-08", "count": 1 }
-                    ]
-                },
-                {
-                    "id": "h205",
-                    "name": "Meditate 10 mins",
-                    "status": "active",
-                    "category": "Mindfulness",
-                    "frequency": 7,
-                    "times": ["06:30 AM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 0 },
-                        { "dateTime": "2025-10-04", "count": 1 },
-                        { "dateTime": "2025-10-05", "count": 0 },
-                        { "dateTime": "2025-10-06", "count": 1 },
-                        { "dateTime": "2025-10-07", "count": 0 },
-                        { "dateTime": "2025-10-08", "count": 1 }
-                    ]
-                },
-                {
-                    "id": "h206",
-                    "name": "No social media after 9PM",
-                    "status": "active",
-                    "category": "Discipline",
-                    "frequency": 7,
-                    "times": ["09:00 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 },
-                        { "dateTime": "2025-10-05", "count": 1 },
-                        { "dateTime": "2025-10-06", "count": 1 },
-                        { "dateTime": "2025-10-07", "count": 1 },
-                        { "dateTime": "2025-10-08", "count": 1 }
-                    ]
-                }
-            ],
+            "habits": {
+                "activeHabits": [
+                    {
+                        "id": "h201",
+                        "name": "Write journal",
+                        "category": "Personal Growth",
+                        "frequency": 7,
+                        "times": ["09:00 PM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 21,
+                        "completionProgress": [
+                            { "dateTime": "2025-10-13", "count": 1 },
+                            { "dateTime": "2025-10-14", "count": 1 },
+                            { "dateTime": "2025-10-15", "count": 1 }
+                        ]
+                    },
+                    {
+                        "id": "h202",
+                        "name": "Drink 2L water",
+                        "category": "Health",
+                        "frequency": 7,
+                        "times": ["10:00 AM", "02:00 PM", "07:00 PM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 21,
+                        "completionProgress": [
+                            { "dateTime": "2025-10-13", "count": 1 },
+                            { "dateTime": "2025-10-14", "count": 1 },
+                            { "dateTime": "2025-10-15", "count": 1 }
+                        ]
+                    },
+                    {
+                        "id": "h203",
+                        "name": "Stretch for 10 mins",
+                        "category": "Fitness",
+                        "frequency": 7,
+                        "times": ["07:00 AM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 10,
+                        "completionProgress": [
+                            { "dateTime": "2025-10-13", "count": 1 },
+                            { "dateTime": "2025-10-14", "count": 1 }
+                        ]
+                    },
+                    {
+                        "id": "h204",
+                        "name": "Read 20 pages",
+                        "category": "Personal Growth",
+                        "frequency": 7,
+                        "times": ["08:00 PM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 7,
+                        "completionProgress": [
+                            { "dateTime": "2025-10-13", "count": 1 },
+                            { "dateTime": "2025-10-14", "count": 1 },
+                            { "dateTime": "2025-10-15", "count": 1 }
+                        ]
+                    },
+                    {
+                        "id": "h205",
+                        "name": "Meditate 10 mins",
+                        "category": "Mindfulness",
+                        "frequency": 7,
+                        "times": ["06:30 AM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 2,
+                        "completionProgress": [
+                            { "dateTime": "2025-10-13", "count": 1 },
+                            { "dateTime": "2025-10-14", "count": 1 },
+                            { "dateTime": "2025-10-15", "count": 1 }
+                        ]
+                    },
+                    {
+                        "id": "h206",
+                        "name": "No social media after 9PM",
+                        "category": "Discipline",
+                        "frequency": 7,
+                        "times": ["09:00 PM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 8,
+                        "completionProgress": [
+                            { "dateTime": "2025-10-13", "count": 1 },
+                            { "dateTime": "2025-10-14", "count": 1 },
+                            { "dateTime": "2025-10-15", "count": 1 }
+                        ]
+                    }
+                ],
+                "overdueHabits": [
+                    {
+                        "id": "h301",
+                        "name": "Read 20 pages",
+                        "category": "Learning",
+                        "frequency": 7,
+                        "times": ["08:00 PM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 7
+                    },
+                    {
+                        "id": "h302",
+                        "name": "Morning Stretch",
+                        "category": "Health",
+                        "frequency": 7,
+                        "times": ["07:00 AM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 5
+                    },
+                    {
+                        "id": "h303",
+                        "name": "Meditation",
+                        "category": "Mindfulness",
+                        "frequency": 7,
+                        "times": ["06:00 AM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 10
+                    },
+                    {
+                        "id": "h304",
+                        "name": "Plan My Day",
+                        "category": "Productivity",
+                        "frequency": 7,
+                        "times": ["09:00 AM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 3
+                    },
+                    {
+                        "id": "h305",
+                        "name": "Workout",
+                        "category": "Fitness",
+                        "frequency": 5,
+                        "times": ["05:00 PM"],
+                        "lastCompleted": "2025-10-08",
+                        "streak": 6
+                    },
+                    {
+                        "id": "h306",
+                        "name": "Meditate 10 mins",
+                        "category": "Mindfulness",
+                        "daysOverdue": 7
+                    }
+                ]
+            },
             "settings": {
                 "penalty": {
                     "enabled": true,
@@ -262,34 +268,40 @@
             "username": "leo_focus",
             "email": "leo.musa@example.com",
             "password": "FocusLeo@77",
-            "habits": [
-                {
-                    "id": "h301",
-                    "name": "Plan tomorrow",
-                    "status": "active",
-                    "category": "Productivity",
-                    "frequency": 7,
-                    "times": ["09:30 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-03", "count": 1 },
-                        { "dateTime": "2025-10-04", "count": 1 },
-                        { "dateTime": "2025-10-05", "count": 1 }
-                    ]
-                },
-                {
-                    "id": "h302",
-                    "name": "Learn coding 1hr",
-                    "status": "active",
-                    "category": "Learning",
-                    "frequency": 5,
-                    "times": ["05:00 PM"],
-                    "completionProgress": [
-                        { "dateTime": "2025-10-01", "count": 1 },
-                        { "dateTime": "2025-10-02", "count": 1 },
-                        { "dateTime": "2025-10-03", "count": 0 }
-                    ]
-                }
-            ],
+            "habits": {
+                "activeHabits": [
+                    {
+                        "id": "h301",
+                        "name": "Plan tomorrow",
+                        "category": "Productivity",
+                        "frequency": 7,
+                        "times": ["09:30 PM"],
+                        "lastCompleted": "2025-10-05",
+                        "streak": 3
+                    },
+                    {
+                        "id": "h302",
+                        "name": "Learn coding 1hr",
+                        "category": "Learning",
+                        "frequency": 5,
+                        "times": ["05:00 PM"],
+                        "lastCompleted": "2025-10-02",
+                        "streak": 2
+                    }
+                ],
+                "overdueHabits": [
+                    {
+                        "id": "h301",
+                        "name": "Plan tomorrow",
+                        "daysOverdue": 10
+                    },
+                    {
+                        "id": "h302",
+                        "name": "Learn coding 1hr",
+                        "daysOverdue": 13
+                    }
+                ]
+            },
             "settings": {
                 "penalty": {
                     "enabled": true,

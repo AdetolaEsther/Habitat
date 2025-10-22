@@ -1,16 +1,17 @@
-export interface CompletionProgress {
-    dateTime: string; 
-    count: number; 
-}
-
 export interface Habit {
     id: string;
     name: string;
-    status:  string;
     category: string;
     frequency: number;
-    times: string[]; 
-    completionProgress: CompletionProgress[];
+    times: string[];
+    lastCompleted: string;
+    streak: number;
+    daysOverdue?: number; // optional, only for overdue habits
+}
+
+export interface UserHabits {
+    activeHabits: Habit[];
+    overdueHabits: Habit[];
 }
 
 export interface PenaltySettings {
@@ -34,7 +35,7 @@ export interface User {
     username: string;
     email: string;
     password: string;
-    habits: Habit[];
+    habits: UserHabits;
     settings: UserSettings;
 }
 

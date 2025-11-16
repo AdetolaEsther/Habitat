@@ -35,6 +35,7 @@ export interface User {
     username: string;
     email: string;
     password: string;
+    profileImage: string;
     habits: UserHabits;
     settings: UserSettings;
 }

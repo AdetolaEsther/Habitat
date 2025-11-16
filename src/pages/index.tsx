@@ -33,7 +33,6 @@ useEffect(() => {
                 px: 2,
             }}
         >
-            {/* App Title */}
             <motion.div
                 initial={{ opacity: 0, y: -15, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}

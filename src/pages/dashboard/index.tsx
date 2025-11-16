@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, Avatar, CircularProgress } from "@mui/material";
+import { Box, Typography, Avatar, CircularProgress, Button } from "@mui/material";
 import dayjs from "dayjs";
 import DateStrip from "@/shared/datesrtip";
 import { User } from "@/data/userType";
@@ -8,6 +8,7 @@ import Layout from "@/components/layout";
 import OverdueCardList from "@/components/OverdueCard";
 import ActiveCardList from "@/components/ActiveCard";
 import Explore from "@/components/Explore";
+import { Icon } from "@iconify/react";
 
 export default function Dashboard() {
     const [user, setUser] = useState<User | null>(null);
@@ -102,7 +103,7 @@ const getHabitImage = (habit: any) => {
         }
     }, []);
 
-    // if (!user) return null;
+    if (!user) return null;
 
     console.log(user, "user");
     return (
@@ -116,6 +117,72 @@ const getHabitImage = (habit: any) => {
                     py: 2,
                 }}
             >
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        mb: 2,
+                        px: 1,
+                    }}
+                >
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                        <Avatar
+                            src={"/profilee-picture.jpg"}
+                            alt={user?.firstname || "User"}
+                            sx={{
+                                width: 48,
+                                height: 48,
+                            }}
+                        >
+                            {!user?.profileImage &&
+                                user?.firstname?.[0]?.toUpperCase()}
+                        </Avatar>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4, duration: 0.6 }}
+                            style={{
+                                fontSize: "1rem",
+                                fontWeight: 700,
+                                color: "#7c003d",
+                            }}
+                        >
+                            {greeting}, {user?.firstname || "Friend"} 👋
+                        </motion.h2>
+                    </Box>
+
+                    <Box
+                        component="button"
+                        sx={{
+                            backgroundColor: "#0A1128",
+                            color: "#fff",
+                            width: 28,
+                            height: 28,
+                            borderRadius: "50%",
+                            border: "none",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            boxShadow: "0 2px 8px rgba(124, 124, 255, 0.3)",
+                            transition: "all 0.3s ease",
+                            "&:hover": {
+                                backgroundColor: "#6b6bef",
+                                transform: "scale(1.05)",
+                            },
+                            "&:active": {
+                                transform: "scale(0.95)",
+                            },
+                        }}
+                    >
+                        <Icon
+                            icon={"material-symbols:add-rounded"}
+                            fontSize={22}
+                        />
+                    </Box>
+                </Box>
+                <DateStrip />
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -123,6 +190,8 @@ const getHabitImage = (habit: any) => {
                     style={{
                         width: "100%",
                         position: "relative",
+                        borderRadius: "16px",
+                        marginTop: "6px",
                         overflow: "hidden",
                     }}
                 >
@@ -133,7 +202,6 @@ const getHabitImage = (habit: any) => {
                             width: "100%",
                             height: "200px",
                             objectFit: "cover",
-                            transformOrigin: "bottom center",
                             borderRadius: 16,
                         }}
                         animate={{
@@ -146,86 +214,25 @@ const getHabitImage = (habit: any) => {
                             ease: "easeInOut",
                         }}
                     />
-                    <Box
+
+                    <Button
                         sx={{
                             position: "absolute",
-                            top: "55%",
-                            left: "50%",
-                            transform: "translate(-50%, -50%)",
-                            textAlign: "center",
+                            top: "85%",
+                            right: "5px",
+                            transform: "translateY(-50%)",
+                            color: "#fff",
+                            backgroundColor: "#0A1128",
+                            backdropFilter: "blur(4px)",
+                            textTransform: "none",
+                            fontSize: "0.9rem",
+                            borderRadius: "12px",
+                            padding: "6px 12px",
                         }}
                     >
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4, duration: 0.6 }}
-                            style={{
-                                fontSize: "1.6rem",
-                                fontWeight: 700,
-                                color: "#3E6259",
-                            }}
-                        >
-                            {greeting}, {user?.firstname || "Friend"} 👋
-                        </motion.h2>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.8, duration: 0.6 }}
-                            style={{
-                                fontSize: "0.9rem",
-                                color: "#3E6259",
-                            }}
-                        >
-                            Let’s make today gentle and productive ✨
-                        </motion.p>
-                    </Box>
+                        Let’s make today gentle ✨
+                    </Button>
                 </motion.div>
-
-                <DateStrip />
-                {/* 
-                <Box
-                    sx={{
-                        backgroundColor: "#FFFFFF",
-                        borderRadius: 3,
-                        p: 2,
-                        // mb: 2,
-                        mt: 0,
-                        boxShadow: "0px 4px 8px rgba(0,0,0,0.05)",
-                    }}
-                >
-                    <Typography sx={{ color: "#A1879E", mb: 2 }}>
-                        Today's Progress
-                    </Typography>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                position: "relative",
-                                display: "inline-flex",
-                            }}
-                        >
-                          
-                        </Box>
-
-                        <motion.div
-                            initial={{ x: 20, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 0.3, duration: 0.6 }}
-                        >
-                            <Typography
-                                sx={{ color: "#D2899D", fontWeight: 600 }}
-                            >
-                                Habits: {total} active
-                            </Typography>
-                        </motion.div>
-                    </Box>
-                </Box> */}
 
                 <Box sx={{ mt: 3 }}>
                     {user?.habits?.overdueHabits?.length ? (

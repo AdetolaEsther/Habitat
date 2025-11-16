@@ -1,84 +1,70 @@
-import { Box, Typography, Card, Avatar } from "@mui/material";
+import { Box, Typography, Card, Stack } from "@mui/material";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { User } from "@/data/userType";
+import { useEffect, useState } from "react";
+import Layout from "@/components/layout";
 
 export default function HabitDetails() {
     const router = useRouter();
-    const { id, bg } = router.query;
+    const { id } = router.query;
+    const [user, setUser] = useState<User | null>(null);
+ 
 
-    const goals = [
-        {
-            title: "Morning",
-            subtitle: "Reduce Social Anxiety",
-            duration: "22 Minutes",
-            color: "#F8EBD5", // beige
-        },
-        {
-            title: "Day",
-            subtitle: "Reduce Bulimia Nervosa",
-            duration: "16 Minutes",
-            color: "#E5DFF5", // lilac
-        },
-        {
-            title: "Night",
-            subtitle: "Reduce Anorexia",
-            duration: "24 Minutes",
-            color: "#D9EBE7", // sage tint
-        },
+    console.log(user, "user");
+    const cards = [
+        { title: "Intake", subtitle: "Deep Talk", color: "#F2E8FF" },
+        { title: "Mental Effect", subtitle: "Very High", color: "#E8FDF3" },
+        { title: "Focus Level", subtitle: "Moderate", color: "#FFF8E7" },
+        { title: "Energy", subtitle: "Stable", color: "#FDECEF" },
     ];
+    
 
+const [habit, setHabit] = useState<any>(null);
+
+useEffect(() => {
+    const storedHabit = localStorage.getItem("selectedHabit");
+    if (storedHabit) {
+        setHabit(JSON.parse(storedHabit));
+    } else {
+        // If no habit is stored, redirect back to dashboard
+        router.push("/dashboard");
+    }
+}, [router]);
+
+if (!habit) return null;
     return (
-        <Box
-            sx={{
-                minHeight: "100vh",
-                backgroundColor: "#FFF8F8", // your main tone
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                pt: 4,
-            }}
-        >
-            {/* Header */}
-            <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
-                My Goals
-            </Typography>
-            <Typography variant="body2" sx={{ opacity: 0.6, mb: 3 }}>
-                Today, {new Date().toLocaleDateString("en-GB")}
-            </Typography>
-
-            {/* Goals List */}
+        <Layout>
             <Box
                 sx={{
-                    width: "90%",
+                    minHeight: "100vh",
+                    background: "white",
                     display: "flex",
                     flexDirection: "column",
-                    gap: 3,
+                    alignItems: "center",
+                   
                 }}
             >
-                {goals.map((g, i) => (
-                    <Card
-                        key={i}
-                        sx={{
-                            backgroundColor: g.color,
-                            borderRadius: 4,
-                            px: 3,
-                            py: 2,
-                            boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-                        }}
-                    >
-                        <Typography sx={{ fontWeight: 600, mb: 1 }}>
-                            {g.title}
-                        </Typography>
-                        <Typography sx={{ fontWeight: 500 }}>
-                            {g.subtitle}
-                        </Typography>
-                        <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                            {g.duration}
-                        </Typography>
-                    </Card>
-                ))}
-            </Box>
+                <Box sx={{ minHeight: "100vh", p: 1}}>
+                    <img
+                        src={habit.image}
+                        alt={habit.name}
+                        style={{ width: "100%", borderRadius: 16 }}
+                    />
+                    <Typography variant="h5" sx={{ mt: 2, fontWeight: 700 }}>
+                        {habit.name}
+                    </Typography>
+                    <Typography variant="body2" sx={{ mt: 1, opacity: 0.7 }}>
+                        Category: {habit.category || "N/A"}
+                    </Typography>
+                    <Typography variant="body2" sx={{ opacity: 0.6, mb: 4 }}>
+                        What’s your progress today?
+                    </Typography>
 
-           
-        </Box>
+                   
+                    {/* Add more habit details here */}
+                </Box>
+            </Box>
+        </Layout>
     );
 }

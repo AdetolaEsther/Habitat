@@ -1,15 +1,41 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Icon } from "@iconify/react";
+
 
 interface LayoutProps {
     children: React.ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
-    const router = useRouter();
+
+const initialNavItems = [
+    {
+        id: "dashboard",
+        icon: "solar:home-angle-bold",
+        label: "Home",
+        href: "/dashboard",
+    },
+    {
+        id: "add",
+        icon: "solar:add-circle-line-duotone",
+        label: "Add",
+        href: "/add",
+    },
+    {
+        id: "profile",
+        icon: "solar:user-circle-bold",
+        label: "Profile",
+        href: "/profile",
+    },
+    { id: "explore", icon: "ix:explore", label: "Explore", href: "/explore" },
+];
+const [navItems, setNavItems] = useState(initialNavItems);
+const [activeNav, setActiveNav] = useState("dashboard");
+
 
     return (
         <Box
@@ -43,54 +69,55 @@ export default function Layout({ children }: LayoutProps) {
                     zIndex: 1000,
                 }}
             >
-                <Link href="/dashboard" passHref>
-                    <Icon
-                        icon="solar:home-angle-bold"
-                        width="26"
-                        height="26"
-                        color={
-                            router.pathname === "/dashboard"
-                                ? "#3E6259"
-                                : "#B9B9B9"
-                        }
-                    />
-                </Link>
+                {navItems.map((item) => {
+                    const isActive = activeNav === item.id; 
+                    return (
+                        <Box
+                            key={item.id} 
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 1,
+                                px: 2,
+                                py: 0.5,
+                                borderRadius: "16px",
+                                backgroundColor: isActive
+                                    ? "#7c003d"
+                                    : "transparent",
+                                color: isActive ? "#fff" : "#404040",
+                                cursor: "pointer",
+                                transition: "all 0.3s ease",
+                                userSelect: "none",
+                            }}
+                            onClick={() => setActiveNav(item.id)}
+                        >
+                            <Link href={item.href} passHref>
+                                <Icon
+                                    icon={item.icon}
+                                    width={26}
+                                    height={26}
+                                    color={isActive ? "#fff" : "#B9B9B9"}
+                                />
+                            </Link>
 
-                <Link href="/add" passHref>
-                    <Icon
-                        icon="solar:add-circle-line-duotone"
-                        width="32"
-                        height="32"
-                        color={
-                            router.pathname === "/add" ? "#3E6259" : "#B9B9B9"
-                        }
-                    />
-                </Link>
-
-                <Link href="/profile" passHref>
-                    <Icon
-                        icon="solar:user-circle-bold"
-                        width="26"
-                        height="26"
-                        color={
-                            router.pathname === "/profile"
-                                ? "#3E6259"
-                                : "#B9B9B9"
-                        }
-                    />
-                </Link>
-                <Link href="/explore" passHref>
-                    <Icon
-                        icon="ix:explore"
-                        width="26"
-                        height="26"
-                        color={
-                            router.pathname === "/explore"
-                                ? "#3E6259"
-                                : "#B9B9B9"
-                        }
-                    />
-                </Link>
+                            {isActive && (
+                                <motion.div
+                                    initial={{ width: 0, opacity: 0 }}
+                                    animate={{ width: "auto", opacity: 1 }}
+                                    exit={{ width: 0, opacity: 0 }}
+                                    style={{ overflow: "hidden" }}
+                                >
+                                    <Typography
+                                        variant="caption"
+                                        sx={{ fontWeight: 600 }}
+                                    >
+                                        {item.label}
+                                    </Typography>
+                                </motion.div>
+                            )}
+                        </Box>
+                    );
+                })}
             </Box>
         </Box>
     );

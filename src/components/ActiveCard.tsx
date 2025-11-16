@@ -40,9 +40,17 @@ const ActiveCardList: React.FC<ActiveCardListProps> = ({
                     }}
                 >
                     <Box
-                        onClick={() =>
-                            router.push(`/habit-details/${habit.id}`)
-                        }
+                        onClick={() => {
+                            localStorage.setItem(
+                                "selectedHabit",
+                                JSON.stringify({
+                                    ...habit,
+                                    image: getHabitImage(habit),
+                                })
+                            );
+
+                            router.push(`/habit-details/${habit.id}`);
+                        }}
                         sx={{
                             position: "relative",
                             borderRadius: 3,

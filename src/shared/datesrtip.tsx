@@ -13,14 +13,8 @@ export default function DateStrip() {
     return (
         <Box
             sx={{
-                width: "100vw", 
-                position: "relative",
-                left: "50%",
-                right: "50%",
-                ml: "-50vw", 
-                mr: "-50vw",
-                // backgroundColor: "#fff",
-                borderRadius: 0,
+               
+                borderRadius: 2,
                 py: 1.5,
                 // boxShadow: "0px 4px 8px rgba(0,0,0,0.05)",
             }}
@@ -51,16 +45,17 @@ export default function DateStrip() {
                                 sx={{
                                     textAlign: "center",
                                     cursor: "pointer",
-                                    px: 1.5,
+                                    px: 1,
                                     py: 1,
-                                    borderRadius: "16px",
+                                    borderRadius: "26px",
+                                    height: 50,
                                     backgroundColor: isSelected
-                                        ? "#3E6259"
-                                        : "rgba(62, 98, 89, 0.15)", 
+                                        ? "#0A1128"
+                                        : "rgba(62, 98, 89, 0.15)",
 
-                                    color: isSelected ? "#fff" : "#404040",
+                                    color: isSelected ? "#fff" : "#0A1128",
                                     transition: "0.2s ease",
-                                    minWidth: 50,
+                                    minWidth: 20,
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",

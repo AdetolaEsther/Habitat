@@ -113,6 +113,7 @@
             "username": "amara_reads",
             "email": "amara.j@example.com",
             "password": "AmaraReads#19",
+            "profileImage":"https://www.imghippo.com/i/GhoJ5784r.png",
             "habits": {
                 "activeHabits": [
                     {

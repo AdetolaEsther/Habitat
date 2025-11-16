@@ -7,20 +7,11 @@ import Layout from "@/components/layout";
 
 export default function HabitDetails() {
     const router = useRouter();
-    const { id } = router.query;
-    const [user, setUser] = useState<User | null>(null);
  
 
-    console.log(user, "user");
-    const cards = [
-        { title: "Intake", subtitle: "Deep Talk", color: "#F2E8FF" },
-        { title: "Mental Effect", subtitle: "Very High", color: "#E8FDF3" },
-        { title: "Focus Level", subtitle: "Moderate", color: "#FFF8E7" },
-        { title: "Energy", subtitle: "Stable", color: "#FDECEF" },
-    ];
-    
-
 const [habit, setHabit] = useState<any>(null);
+
+console.log({habit});
 
 useEffect(() => {
     const storedHabit = localStorage.getItem("selectedHabit");
@@ -38,31 +29,51 @@ if (!habit) return null;
             <Box
                 sx={{
                     minHeight: "100vh",
-                    background: "white",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                   
                 }}
             >
-                <Box sx={{ minHeight: "100vh", p: 1}}>
+                <Box
+                    sx={{
+                        width: "100%",
+                        backgroundColor: "#FFF",
+                        borderRadius: 3,
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+                        mx: "auto",
+                        mt: 0,
+                    }}
+                >
                     <img
                         src={habit.image}
                         alt={habit.name}
-                        style={{ width: "100%", borderRadius: 16 }}
+                        style={{
+                            width: "100%",
+                            borderRadius: 12,
+                            marginBottom: 16,
+                        }}
                     />
-                    <Typography variant="h5" sx={{ mt: 2, fontWeight: 700 }}>
-                        {habit.name}
-                    </Typography>
-                    <Typography variant="body2" sx={{ mt: 1, opacity: 0.7 }}>
-                        Category: {habit.category || "N/A"}
-                    </Typography>
-                    <Typography variant="body2" sx={{ opacity: 0.6, mb: 4 }}>
-                        What’s your progress today?
-                    </Typography>
 
-                   
-                    {/* Add more habit details here */}
+                    <Box sx={{ px: 2, pb: 2 }}>
+                        <Typography
+                            variant="h5"
+                            sx={{ fontWeight: 700, color: "#7c003d" }}
+                        >
+                            {habit.name}
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{ mt: 1, opacity: 0.7, color: "#7c003d" }}
+                        >
+                            Category: {habit.category || "N/A"}
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{ opacity: 0.6, mt: 1, color: "#7c003d" }}
+                        >
+                            What’s your progress today?
+                        </Typography>
+                    </Box>
                 </Box>
             </Box>
         </Layout>

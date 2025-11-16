@@ -1,5 +1,12 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import { Box, Typography, Avatar, CircularProgress, Button } from "@mui/material";
+import {
+    Box,
+    Typography,
+    Avatar,
+    CircularProgress,
+    Button,
+} from "@mui/material";
 import dayjs from "dayjs";
 import DateStrip from "@/shared/datesrtip";
 import { User } from "@/data/userType";
@@ -20,7 +27,7 @@ export default function Dashboard() {
             ? "Good Afternoon"
             : "Good Evening";
 
-const Habits = user?.habits?.activeHabits || [];
+    const Habits = user?.habits?.activeHabits || [];
 
     const total = Habits.length;
 
@@ -70,8 +77,6 @@ const Habits = user?.habits?.activeHabits || [];
         return streak;
     };
 
-   
-
     const imageMap: Record<string, string> = {
         Health: "/62571.jpg",
         Fitness: "/4846446.jpg",
@@ -79,20 +84,25 @@ const Habits = user?.habits?.activeHabits || [];
         Learning: "/7768446.jpg",
         Productivity: "/4871715.jpg",
     };
-    
+
     const getActiveHabitImage = (habit: any) => {
         if (!user?.habits) return imageMap["Mindfulness"];
-        const activeHabit = user.habits.activeHabits?.find((h: any) => h.id === habit.id);
-        const category = activeHabit?.category || habit.category?.trim() || "Mindfulness";
+        const activeHabit = user.habits.activeHabits?.find(
+            (h: any) => h.id === habit.id
+        );
+        const category =
+            activeHabit?.category || habit.category?.trim() || "Mindfulness";
         return imageMap[category] || imageMap["Mindfulness"];
     };
-const getHabitImage = (habit: any) => {
-    if (!user?.habits) return imageMap["Mindfulness"];
-    const overdueHabit = user.habits.overdueHabits?.find((h: any) => h.id === habit.id);
-    const category = overdueHabit?.category || habit.category?.trim() || "Mindfulness";
-    return imageMap[category] || imageMap["Mindfulness"];
-};
-
+    const getHabitImage = (habit: any) => {
+        if (!user?.habits) return imageMap["Mindfulness"];
+        const overdueHabit = user.habits.overdueHabits?.find(
+            (h: any) => h.id === habit.id
+        );
+        const category =
+            overdueHabit?.category || habit.category?.trim() || "Mindfulness";
+        return imageMap[category] || imageMap["Mindfulness"];
+    };
 
     useEffect(() => {
         const storedUser = localStorage.getItem("loggedInUser");

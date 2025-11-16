@@ -15,7 +15,7 @@
                         "category": "Mindfulness",
                         "frequency": 7,
                         "times": ["06:30 AM"],
-                        "lastCompleted": "2025-10-06",
+                        "duration": "10 min",
                         "streak": 4
                     },
                     {
@@ -24,7 +24,7 @@
                         "category": "Learning",
                         "frequency": 5,
                         "times": ["08:00 PM"],
-                        "lastCompleted": "2025-10-04",
+                        "duration": "20 mins",
                         "streak": 2
                     }
                 ],
@@ -64,7 +64,7 @@
                         "category": "Fitness",
                         "frequency": 6,
                         "times": ["07:00 AM"],
-                        "lastCompleted": "2025-10-04",
+                        "duration": "15 mins",
                         "streak": 4,
                         "completionProgress": [
                             { "dateTime": "2025-10-13", "count": 1 },
@@ -79,7 +79,7 @@
                         "category": "Health",
                         "frequency": 4,
                         "times": [],
-                        "lastCompleted": "2025-10-02",
+                        "duration": "20 mins",
                         "streak": 2,
                         "completionProgress": [
                             { "dateTime": "2025-10-13", "count": 1 },
@@ -122,7 +122,7 @@
                         "category": "Personal Growth",
                         "frequency": 7,
                         "times": ["09:00 PM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "5 min",
                         "streak": 21,
                         "completionProgress": [
                             { "dateTime": "2025-10-13", "count": 1 },
@@ -136,7 +136,7 @@
                         "category": "Health",
                         "frequency": 7,
                         "times": ["10:00 AM", "02:00 PM", "07:00 PM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "whole day",
                         "streak": 21,
                         "completionProgress": [
                             { "dateTime": "2025-10-13", "count": 1 },
@@ -150,7 +150,7 @@
                         "category": "Fitness",
                         "frequency": 7,
                         "times": ["07:00 AM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "10 mins",
                         "streak": 10,
                         "completionProgress": [
                             { "dateTime": "2025-10-13", "count": 1 },
@@ -163,7 +163,7 @@
                         "category": "Personal Growth",
                         "frequency": 7,
                         "times": ["08:00 PM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "30 mins",
                         "streak": 7,
                         "completionProgress": [
                             { "dateTime": "2025-10-13", "count": 1 },
@@ -173,11 +173,11 @@
                     },
                     {
                         "id": "h205",
-                        "name": "Meditate 10 mins",
+                        "name": "Meditate",
                         "category": "Mindfulness",
                         "frequency": 7,
                         "times": ["06:30 AM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "10 mins",
                         "streak": 2,
                         "completionProgress": [
                             { "dateTime": "2025-10-13", "count": 1 },
@@ -191,7 +191,7 @@
                         "category": "Discipline",
                         "frequency": 7,
                         "times": ["09:00 PM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "5 hours",
                         "streak": 8,
                         "completionProgress": [
                             { "dateTime": "2025-10-13", "count": 1 },
@@ -207,7 +207,7 @@
                         "category": "Learning",
                         "frequency": 7,
                         "times": ["08:00 PM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "20 mins",
                         "streak": 7
                     },
                     {
@@ -216,7 +216,7 @@
                         "category": "Health",
                         "frequency": 7,
                         "times": ["07:00 AM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "20 mins",
                         "streak": 5
                     },
                     {
@@ -225,7 +225,7 @@
                         "category": "Mindfulness",
                         "frequency": 7,
                         "times": ["06:00 AM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "25  mins",
                         "streak": 10
                     },
                     {
@@ -234,7 +234,7 @@
                         "category": "Productivity",
                         "frequency": 7,
                         "times": ["09:00 AM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "10 mins",
                         "streak": 3
                     },
                     {
@@ -243,7 +243,7 @@
                         "category": "Fitness",
                         "frequency": 5,
                         "times": ["05:00 PM"],
-                        "lastCompleted": "2025-10-08",
+                        "duration": "2 hours",
                         "streak": 6
                     },
                     {
@@ -277,16 +277,16 @@
                         "category": "Productivity",
                         "frequency": 7,
                         "times": ["09:30 PM"],
-                        "lastCompleted": "2025-10-05",
+                        "duration": "20 mins",
                         "streak": 3
                     },
                     {
                         "id": "h302",
-                        "name": "Learn coding 1hr",
+                        "name": "Learn coding ",
                         "category": "Learning",
                         "frequency": 5,
                         "times": ["05:00 PM"],
-                        "lastCompleted": "2025-10-02",
+                        "duration": "2 hours",
                         "streak": 2
                     }
                 ],

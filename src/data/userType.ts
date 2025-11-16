@@ -1,4 +1,5 @@
 export interface Habit {
+    duration: string ;
     id: string;
     name: string;
     category: string;
@@ -6,7 +7,7 @@ export interface Habit {
     times: string[];
     lastCompleted: string;
     streak: number;
-    daysOverdue?: number; // optional, only for overdue habits
+    daysOverdue?: number; 
 }
 
 export interface UserHabits {

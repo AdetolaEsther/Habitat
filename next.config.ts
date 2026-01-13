@@ -1,7 +1,6 @@
-import type { NextConfig } from "next";
 import withPWA from "next-pwa";
 
-const nextConfig: NextConfig = {
+const nextConfig: any = {
     reactStrictMode: true,
     eslint: {
         ignoreDuringBuilds: true,

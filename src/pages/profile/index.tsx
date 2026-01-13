@@ -10,6 +10,7 @@ import {
     CardContent,
     Switch,
     IconButton,
+    Grid,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import React, { useEffect, useState } from "react";
@@ -34,7 +35,10 @@ const ProfilePage = () => {
 
     return (
         <Layout>
-            <Box sx={{ minHeight: "100vh", p: 1 }}>
+            <Box
+                // className={darkMode ? "dark-mode" : "light-mode"}
+                sx={{ minHeight: "100vh", p: 1 }}
+            >
                 <Stack spacing={3} sx={{ maxWidth: 600, mx: "auto" }}>
                     {/* Header */}
                     <Stack
@@ -47,14 +51,17 @@ const ProfilePage = () => {
                                 icon="mdi:chevron-left"
                                 width={28}
                                 height={28}
+                                color="#fff"
                                 onClick={() => window.history.back()}
                             />
                         </IconButton>
                         <Typography variant="h6" fontWeight={600}>
                             My Profile
                         </Typography>
+                        <Typography variant="caption" fontWeight={500}>
+                            Edit{" "}
+                        </Typography>
                     </Stack>
-
                     {/* Profile Section */}
                     <Stack alignItems="center" spacing={1} sx={{ mt: 2 }}>
                         <Box sx={{ position: "relative" }}>
@@ -71,16 +78,16 @@ const ProfilePage = () => {
                                     position: "absolute",
                                     bottom: 0,
                                     right: 0,
-                                    bgcolor: "white",
+                                    bgcolor: "#7c003d",
                                     width: 32,
                                     height: 32,
-                                    "&:hover": { bgcolor: "grey.100" },
                                 }}
                             >
                                 <Icon
                                     icon="mdi:pencil"
                                     width={16}
                                     height={16}
+                                    color="#fff"
                                 />
                             </IconButton>
                         </Box>
@@ -91,15 +98,203 @@ const ProfilePage = () => {
                         >
                             Brooklyn Simmons
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            mdjahid7755@gmail.com
+
+                        <Typography
+                            variant="caption"
+                            sx={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 0.7,
+                                backgroundColor: "rgba(255,255,255,0.08)",
+                                px: 2,
+                                py: 0.5,
+                                borderRadius: 999,
+                                color: "#fff",
+                                fontWeight: 600,
+                                fontSize: "0.75rem",
+                            }}
+                        >
+                            <Icon
+                                icon="mdi:medal"
+                                width={14}
+                                height={14}
+                                color="#fff"
+                            />
+                            Habit Master (LVL 5){" "}
                         </Typography>
                     </Stack>
-
-                    {/* Info Cards */}
-
+                    <Stack
+                        alignItems="center"
+                        spacing={1}
+                        sx={{ mt: 2, width: "100%" }}
+                    >
+                        <Grid container spacing={2}>
+                            <Grid>
+                                <Card
+                                    sx={{
+                                        px: 3,
+                                        py: 2,
+                                        borderRadius: 3,
+                                        textAlign: "start",
+                                        backgroundColor:
+                                            "rgba(255,255,255,0.08)",
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: 0.7,
+                                        }}
+                                    >
+                                        <Icon
+                                            icon="mdi:fire"
+                                            width={18}
+                                            height={18}
+                                            style={{ flexShrink: 0 }}
+                                            color="#fff"
+                                        />
+                                        <Typography
+                                            variant="caption"
+                                            sx={{
+                                                color: "gray",
+                                                fontSize: "0.75rem",
+                                            }}
+                                        >
+                                            Streak
+                                        </Typography>
+                                    </Box>
+                                    <Typography
+                                        variant="h6"
+                                        color="#fff"
+                                        sx={{
+                                            fontWeight: 700,
+                                        }}
+                                    >
+                                        9{" "}
+                                    </Typography>
+                                    <Typography variant="caption" color="gray">
+                                        + 1 day{" "}
+                                    </Typography>
+                                </Card>
+                            </Grid>
+                            <Grid>
+                                <Card
+                                    sx={{
+                                        px: 3,
+                                        py: 2,
+                                        borderRadius: 3,
+                                        textAlign: "start",
+                                        backgroundColor:
+                                            "rgba(255,255,255,0.08)",
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: 0.9,
+                                        }}
+                                    >
+                                        <Icon
+                                            icon="carbon:checkmark-filled"
+                                            width={18}
+                                            height={18}
+                                            style={{ flexShrink: 0 }}
+                                            color="#fff"
+                                        />
+                                        <Typography
+                                            variant="caption"
+                                            sx={{
+                                                color: "gray",
+                                                fontSize: "0.75rem",
+                                            }}
+                                        >
+                                            Done
+                                        </Typography>
+                                    </Box>
+                                    <Typography
+                                        variant="h6"
+                                        color="#fff"
+                                        sx={{
+                                            fontWeight: 700,
+                                        }}
+                                    >
+                                        39%{" "}
+                                    </Typography>
+                                    <Typography variant="caption" color="gray">
+                                        + 1% rate{" "}
+                                    </Typography>
+                                </Card>
+                            </Grid>
+                            <Grid>
+                                <Card
+                                    sx={{
+                                        px: 3,
+                                        py: 2,
+                                        borderRadius: 3,
+                                        textAlign: "start",
+                                        backgroundColor:
+                                            "rgba(255,255,255,0.08)",
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: 0.7,
+                                        }}
+                                    >
+                                        <Icon
+                                            icon="dashicons:awards"
+                                            width={18}
+                                            height={18}
+                                            style={{ flexShrink: 0 }}
+                                            color="#fff"
+                                        />
+                                        <Typography
+                                            variant="caption"
+                                            sx={{
+                                                color: "gray",
+                                                fontSize: "0.75rem",
+                                            }}
+                                        >
+                                            Awards{" "}
+                                        </Typography>
+                                    </Box>
+                                    <Typography
+                                        variant="h6"
+                                        color="#fff"
+                                        sx={{
+                                            fontWeight: 700,
+                                        }}
+                                    >
+                                        9{" "}
+                                    </Typography>
+                                    <Typography variant="caption" color="gray">
+                                        + 0 new{" "}
+                                    </Typography>
+                                </Card>
+                            </Grid>
+                        </Grid>
+                    </Stack>
                     {/* Settings Card */}
-                    <Card sx={{ borderRadius: 3, boxShadow: "none", p: 3 }}>
+                    <Typography
+                        sx={{
+                            color: "gray",
+                        }}
+                    >
+                        General{" "}
+                    </Typography>
+
+                    <Card
+                        sx={{
+                            borderRadius: 3,
+                            boxShadow: "none",
+                            p: 3,
+                            backgroundColor: "rgba(255,255,255,0.06)",
+                        }}
+                    >
                         <Stack
                             divider={
                                 <Box
@@ -110,7 +305,6 @@ const ProfilePage = () => {
                                 />
                             }
                         >
-                            {/* Notifications Toggle */}
                             <Box
                                 sx={{
                                     display: "flex",
@@ -124,16 +318,29 @@ const ProfilePage = () => {
                                     spacing={2}
                                     alignItems="center"
                                 >
-                                    <Icon
-                                        icon="mdi:bell-outline"
-                                        width={24}
-                                        height={24}
-                                    />
+                                    <IconButton
+                                        sx={{
+                                            backgroundColor:
+                                                "rgba(125, 0, 62, 0.28)",
+                                            borderRadius: "6px",
+                                            width: 48,
+                                            height: 48,
+                                            mb: 6,
+                                        }}
+                                    >
+                                        <Icon
+                                            icon="mdi:bell"
+                                            color="#fff"
+                                            width={24}
+                                            height={24}
+                                        />
+                                    </IconButton>
+
                                     <Typography
                                         variant="body1"
                                         fontWeight={500}
                                     >
-                                        Notifications
+                                        Daily Reminders{" "}
                                     </Typography>
                                 </Stack>
                                 <Switch
@@ -142,13 +349,17 @@ const ProfilePage = () => {
                                     sx={{
                                         mb: 4,
                                         "& .MuiSwitch-switchBase.Mui-checked": {
-                                            color: "#0A1128",
+                                            color: "#fff",
+                                            "& + .MuiSwitch-track": {
+                                                backgroundColor: "#000", // black track
+                                            },
+                                        },
+                                        "& .MuiSwitch-track": {
+                                            backgroundColor: "#888", // track for unchecked state
                                         },
                                     }}
                                 />
                             </Box>
-
-                            {/* Dark Mode Toggle */}
                             <Box
                                 sx={{
                                     display: "flex",
@@ -162,81 +373,68 @@ const ProfilePage = () => {
                                     spacing={2}
                                     alignItems="center"
                                 >
-                                    <Icon
-                                        icon="mdi:weather-sunny"
-                                        width={24}
-                                        height={24}
-                                    />
+                                    <IconButton
+                                        sx={{
+                                            backgroundColor:
+                                                "rgba(125, 0, 62, 0.28)",
+                                            borderRadius: "6px",
+                                            width: 48,
+                                            height: 48,
+                                            mb: 6,
+                                        }}
+                                    >
+                                        <Icon
+                                            icon="lets-icons:sound-max-fill"
+                                            color="#fff"
+                                            width={28}
+                                            height={28}
+                                        />
+                                    </IconButton>
+
                                     <Typography
                                         variant="body1"
                                         fontWeight={500}
                                     >
-                                        Light or Dark Interface
+                                        Sound Effects{" "}
                                     </Typography>
                                 </Stack>
                                 <Switch
-                                    checked={darkMode}
-                                    onChange={toggleMode}
+                                    checked={notifications}
+                                    onChange={handleNotification}
                                     sx={{
                                         mb: 4,
                                         "& .MuiSwitch-switchBase.Mui-checked": {
-                                            color: "#0A1128",
+                                            color: "#fff",
+                                            "& + .MuiSwitch-track": {
+                                                backgroundColor: "#000", // black track
+                                            },
+                                        },
+                                        "& .MuiSwitch-track": {
+                                            backgroundColor: "#888", // track for unchecked state
                                         },
                                     }}
                                 />
                             </Box>
 
-                            {/* Language */}
-                            <Box
-                                onClick={() => console.log("Language")}
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                    py: 2,
-                                    cursor: "pointer",
-                                }}
-                            >
-                                <Stack
-                                    direction="row"
-                                    spacing={2}
-                                    alignItems="center"
-                                >
-                                    <Icon
-                                        icon="mdi:web"
-                                        width={24}
-                                        height={24}
-                                    />
-                                    <Typography
-                                        variant="body1"
-                                        fontWeight={500}
-                                    >
-                                        Language
-                                    </Typography>
-                                </Stack>
-                                <Stack
-                                    direction="row"
-                                    spacing={1}
-                                    alignItems="center"
-                                >
-                                    <Typography
-                                        variant="body2"
-                                        color="text.secondary"
-                                    >
-                                        English / Bangla
-                                    </Typography>
-                                    <Icon
-                                        icon="mdi:chevron-right"
-                                        width={24}
-                                        height={24}
-                                    />
-                                </Stack>
-                            </Box>
+                           
                         </Stack>
                     </Card>
+                    <Typography
+                        sx={{
+                            color: "gray",
+                        }}
+                    >
+                        Account{" "}
+                    </Typography>
 
-                    {/* Menu Card */}
-                    <Card sx={{ borderRadius: 3, boxShadow: "none", p: 3 }}>
+                    <Card
+                        sx={{
+                            borderRadius: 3,
+                            boxShadow: "none",
+                            p: 3,
+                            backgroundColor: "rgba(255,255,255,0.06)",
+                        }}
+                    >
                         <Stack
                             divider={
                                 <Box
@@ -248,13 +446,11 @@ const ProfilePage = () => {
                             }
                         >
                             <Box
-                                onClick={() => console.log("FAQ")}
                                 sx={{
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "space-between",
                                     py: 2,
-                                    cursor: "pointer",
                                 }}
                             >
                                 <Stack
@@ -262,128 +458,108 @@ const ProfilePage = () => {
                                     spacing={2}
                                     alignItems="center"
                                 >
-                                    <Icon
-                                        icon="mdi:help-circle-outline"
-                                        width={24}
-                                        height={24}
-                                    />
+                                    <IconButton
+                                        sx={{
+                                            backgroundColor:
+                                                "rgba(125, 0, 62, 0.28)",
+                                            borderRadius: "6px",
+                                            width: 48,
+                                            height: 48,
+                                            mb: 6,
+                                        }}
+                                    >
+                                        <Icon
+                                            icon="mdi:bell"
+                                            color="#fff"
+                                            width={24}
+                                            height={24}
+                                        />
+                                    </IconButton>
+
                                     <Typography
                                         variant="body1"
                                         fontWeight={500}
                                     >
-                                        FAQ
+                                        Daily Reminders{" "}
                                     </Typography>
                                 </Stack>
-                                <Icon
-                                    icon="mdi:chevron-right"
-                                    width={24}
-                                    height={24}
+                                <Switch
+                                    checked={notifications}
+                                    onChange={handleNotification}
+                                    sx={{
+                                        mb: 4,
+                                        "& .MuiSwitch-switchBase.Mui-checked": {
+                                            color: "#fff",
+                                            "& + .MuiSwitch-track": {
+                                                backgroundColor: "#000", // black track
+                                            },
+                                        },
+                                        "& .MuiSwitch-track": {
+                                            backgroundColor: "#888", // track for unchecked state
+                                        },
+                                    }}
+                                />
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    py: 2,
+                                }}
+                            >
+                                <Stack
+                                    direction="row"
+                                    spacing={2}
+                                    alignItems="center"
+                                >
+                                    <IconButton
+                                        sx={{
+                                            backgroundColor:
+                                                "rgba(125, 0, 62, 0.28)",
+                                            borderRadius: "6px",
+                                            width: 48,
+                                            height: 48,
+                                            mb: 6,
+                                        }}
+                                    >
+                                        <Icon
+                                            icon="lets-icons:sound-max-fill"
+                                            color="#fff"
+                                            width={28}
+                                            height={28}
+                                        />
+                                    </IconButton>
+
+                                    <Typography
+                                        variant="body1"
+                                        fontWeight={500}
+                                    >
+                                        Sound Effects{" "}
+                                    </Typography>
+                                </Stack>
+                                <Switch
+                                    checked={notifications}
+                                    onChange={handleNotification}
+                                    sx={{
+                                        mb: 4,
+                                        "& .MuiSwitch-switchBase.Mui-checked": {
+                                            color: "#fff",
+                                            "& + .MuiSwitch-track": {
+                                                backgroundColor: "#000", // black track
+                                            },
+                                        },
+                                        "& .MuiSwitch-track": {
+                                            backgroundColor: "#888", // track for unchecked state
+                                        },
+                                    }}
                                 />
                             </Box>
 
-                            <Box
-                                onClick={() => console.log("Support")}
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                    py: 2,
-                                    cursor: "pointer",
-                                }}
-                            >
-                                <Stack
-                                    direction="row"
-                                    spacing={2}
-                                    alignItems="center"
-                                >
-                                    <Icon
-                                        icon="mdi:headset"
-                                        width={24}
-                                        height={24}
-                                    />
-                                    <Typography
-                                        variant="body1"
-                                        fontWeight={500}
-                                    >
-                                        Contact Support
-                                    </Typography>
-                                </Stack>
-                                <Icon
-                                    icon="mdi:chevron-right"
-                                    width={24}
-                                    height={24}
-                                />
-                            </Box>
-
-                            <Box
-                                onClick={handleRateApp}
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                    py: 2,
-                                    cursor: "pointer",
-                                }}
-                            >
-                                <Stack
-                                    direction="row"
-                                    spacing={2}
-                                    alignItems="center"
-                                >
-                                    <Icon
-                                        icon="mdi:star-outline"
-                                        width={24}
-                                        height={24}
-                                    />
-                                    <Typography
-                                        variant="body1"
-                                        fontWeight={500}
-                                    >
-                                        Rate the App
-                                    </Typography>
-                                </Stack>
-                                <Icon
-                                    icon="mdi:chevron-right"
-                                    width={24}
-                                    height={24}
-                                />
-                            </Box>
-
-                            <Box
-                                onClick={handleSettings}
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                    py: 2,
-                                    cursor: "pointer",
-                                }}
-                            >
-                                <Stack
-                                    direction="row"
-                                    spacing={2}
-                                    alignItems="center"
-                                >
-                                    <Icon
-                                        icon="mdi:cog-outline"
-                                        width={24}
-                                        height={24}
-                                    />
-                                    <Typography
-                                        variant="body1"
-                                        fontWeight={500}
-                                    >
-                                        Settings
-                                    </Typography>
-                                </Stack>
-                                <Icon
-                                    icon="mdi:chevron-right"
-                                    width={24}
-                                    height={24}
-                                />
-                            </Box>
+                           
                         </Stack>
                     </Card>
+                   
                 </Stack>
             </Box>
         </Layout>

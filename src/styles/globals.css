@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #dbd1d1;
+  --foreground: #f1eeee;
 }
 
 body, html {
@@ -22,3 +22,6 @@ body, html {
   box-shadow: 0 0 10px rgba(0,0,0,0.1); 
   padding: 0;              /* explicitly no padding */
 }
+
+
+

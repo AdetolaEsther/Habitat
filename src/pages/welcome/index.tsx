@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Box, Button, Typography, TextField, Link } from "@mui/material";
+import { Box, Button, Typography, TextField, Link,  IconButton } from "@mui/material";
 import Logo from "@/shared/logo";
 import usersData from "@/data/user.json"
 import { toast } from "react-toastify";
+import { Icon } from "@iconify/react";
 
 export default function Welcome() {
     const router = useRouter();
@@ -37,139 +38,167 @@ export default function Welcome() {
     return (
         <Box
             sx={{
-                height: "100vh",
+                minHeight: "100vh",
                 width: "100%",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center",
-                backgroundColor: "#FFF8F8",
-                alignItems: "center",
-                textAlign: "center",
+                justifyContent: "space-between",
+                backgroundColor: "#0a1129",
                 px: 3,
+                py: 4,
             }}
         >
-            <Logo />
-            <Typography
-                variant="h4"
-                sx={{
-                    color: "#B17596",
-                    fontWeight: 700,
-                    mb: 1,
-                }}
-            >
-                Welcome Back 👋
-            </Typography>
-            <Typography variant="body1" sx={{ color: "#A1879E", mb: 4 }}>
-                Log in to continue your habit journey
-            </Typography>
-
-            {/* Form */}
-            <form
-                onSubmit={handleLogin}
-                style={{
-                    width: "100%",
-                    maxWidth: 350,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1.2rem",
-                }}
-            >
-                <TextField
-                    label="Email"
-                    type="email"
-                    variant="outlined"
-                    size="small"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    fullWidth
-                    InputProps={{
-                        sx: {
-                            backgroundColor: "transparent",
-                            "& fieldset": {
-                                borderColor: "#D8C1D2",
-                            },
-                            "&:hover fieldset": {
-                                borderColor: "#B17596",
-                            },
-                            "&.Mui-focused fieldset": {
-                                borderColor: "#B17596",
-                            },
-                        },
-                    }}
-                    InputLabelProps={{
-                        shrink: true,
-                        sx: {
-                            color: "#A1879E",
-                            fontWeight: 500,
-                        },
-                    }}
-                />
-
-                <TextField
-                    label="Password"
-                    type="password"
-                    variant="outlined"
-                    size="small"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    fullWidth
-                    InputProps={{
-                        sx: {
-                            backgroundColor: "transparent",
-                            "& fieldset": {
-                                borderColor: "#D8C1D2",
-                            },
-                            "&:hover fieldset": {
-                                borderColor: "#B17596",
-                            },
-                            "&.Mui-focused fieldset": {
-                                borderColor: "#B17596",
-                            },
-                        },
-                    }}
-                    InputLabelProps={{
-                        shrink: true,
-                        sx: {
-                            color: "#A1879E",
-                            fontWeight: 500,
-                        },
-                    }}
-                />
-
-                <Button
-                    type="submit"
-                    variant="contained"
-                    fullWidth
+            <Box sx={{ textAlign: "center" }}>
+                <IconButton
                     sx={{
-                        backgroundColor: "#F29CA3",
+                        backgroundColor: "rgba(125, 0, 62, 0.28)",
+                        borderRadius: "6px",
+                        width: 48,
+                        height: 48,
+                        mb: 6,
+                    }}
+                >
+                    <Icon
+                        icon="carbon:checkmark-filled"
+                        width={26}
+                        height={26}
+                        color="#7d003e"
+                    />
+                </IconButton>
+
+                <Typography
+                    variant="h4"
+                    sx={{
                         color: "#fff",
-                        borderRadius: "2rem",
-                        py: 1.2,
-                        textTransform: "none",
-                        fontSize: "1rem",
-                        mt: 1,
-                        "&:hover": { backgroundColor: "#e18d94" },
+                        fontWeight: 700,
+                        mb: 1,
                     }}
                 >
-                    Log In
-                </Button>
-            </form>
+                    Welcome Back
+                </Typography>
 
-            <Typography variant="body2" sx={{ color: "#8C738B", mt: "1.5rem" }}>
-                Don’t have an account?{" "}
-                <Link
-                    onClick={() => router.push("/signup")}
+                <Typography
+                    variant="body1"
                     sx={{
-                        color: "#B17596",
-                        fontWeight: 600,
-                        cursor: "pointer",
-                        textDecoration: "none",
-                        "&:hover": { textDecoration: "underline" },
+                        color: "#fff",
                     }}
                 >
-                    Create one
-                </Link>
-            </Typography>
+                    Log in to continue your habit journey
+                </Typography>
+            </Box>
+
+            <Box
+                sx={{
+                    width: "100%",
+                    maxWidth: 450,
+                    mx: "auto",
+                    mb: 6,
+                }}
+            >
+                <form
+                    onSubmit={handleLogin}
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "1.6rem",
+                    }}
+                >
+                    <TextField
+                        label="Email"
+                        type="email"
+                        variant="outlined"
+                        size="small"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        fullWidth
+                        InputProps={{
+                            sx: {
+                                height: 62,
+                                color: "#fff",
+                                backgroundColor: "#17203c",
+                                borderRadius: "10px",
+                                "& fieldset": {
+                                    borderColor: "#2d3b5e",
+                                },
+                            },
+                        }}
+                        InputLabelProps={{
+                            shrink: true,
+                            sx: {
+                                color: "#fff",
+                                fontWeight: 500,
+                                fontSize: "18px",
+                            },
+                        }}
+                    />{" "}
+                    <TextField
+                        label="Enter your Password"
+                        type="password"
+                        variant="outlined"
+                        size="small"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        fullWidth
+                        InputProps={{
+                            sx: {
+                                height: 62,
+                                color: "#fff",
+                                backgroundColor: "#17203c",
+                                borderRadius: "10px",
+                                "& fieldset": {
+                                    borderColor: "#2d3b5e",
+                                },
+                            },
+                        }}
+                        InputLabelProps={{
+                            shrink: true,
+                            sx: {
+                                color: "#fff",
+                                fontWeight: 500,
+                                fontSize: "18px",
+                            },
+                        }}
+                        placeholder="Enter your password"
+                    />{" "}
+                    
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        fullWidth
+                        sx={{
+                            backgroundColor: "#7d003e",
+                            color: "#fff",
+                            borderRadius: "2rem",
+                            py: 1.2,
+                            textTransform: "none",
+                            fontSize: "1.2rem",
+                            mt: 1,
+                        }}
+                    >
+                        {" "}
+                        Log In{" "}
+                    </Button>
+                </form>
+            </Box>
+
+            <Box sx={{ textAlign: "center", mt: 4 }}>
+                <Typography variant="body2" sx={{ color: "#fff" }}>
+                    Don’t have an account?{" "}
+                    <Link
+                        onClick={() => router.push("/signup")}
+                        sx={{
+                            color: "#7d003e",
+                            fontWeight: 600,
+                            cursor: "pointer",
+                            textDecoration: "none",
+                            "&:hover": { textDecoration: "underline" },
+                        }}
+                    >
+                        Create one
+                    </Link>
+                </Typography>
+            </Box>
         </Box>
     );
 }

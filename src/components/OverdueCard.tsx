@@ -19,7 +19,7 @@ const OverdueCardList: React.FC<OverdueCardListProps> = ({
 
     return (
         <Box>
-            <Typography sx={{ color: "#A1879E", mb: 2, fontWeight: 600 }}>
+            <Typography sx={{ color: "#777777", mb: 1, fontWeight: 600 }}>
                 Habits to Revisit ✨
             </Typography>
             <Box
@@ -29,6 +29,7 @@ const OverdueCardList: React.FC<OverdueCardListProps> = ({
                     display: "flex",
                     gap: 3,
                     scrollSnapType: "x mandatory",
+                    
                     scrollbarWidth: "none",
                     msOverflowStyle: "none",
                     "&::-webkit-scrollbar": { display: "none" },
@@ -95,7 +96,7 @@ const OverdueCardList: React.FC<OverdueCardListProps> = ({
                                         position: "absolute",
                                         inset: 0,
                                         background:
-                                            "linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1))",
+                                            "linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.8))",
                                         zIndex: 1,
                                     }}
                                 />

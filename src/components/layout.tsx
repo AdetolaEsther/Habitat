@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
+import { useRouter } from "next/router"; 
+
 
 
 interface LayoutProps {
@@ -11,31 +13,41 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+    const router = useRouter();
 
-const initialNavItems = [
-    {
-        id: "dashboard",
-        icon: "solar:home-angle-bold",
-        label: "Home",
-        href: "/dashboard",
-    },
-    {
-        id: "add",
-        icon: "solar:add-circle-line-duotone",
-        label: "Add",
-        href: "/add",
-    },
-    {
-        id: "profile",
-        icon: "solar:user-circle-bold",
-        label: "Profile",
-        href: "/profile",
-    },
-    { id: "explore", icon: "ix:explore", label: "Explore", href: "/explore" },
-];
-const [navItems, setNavItems] = useState(initialNavItems);
-const [activeNav, setActiveNav] = useState("dashboard");
-
+    const initialNavItems = [
+        {
+            id: "dashboard",
+            icon: "solar:home-angle-bold",
+            label: "Home",
+            href: "/dashboard",
+        },
+        {
+            id: "add",
+            icon: "solar:add-circle-line-duotone",
+            label: "Add",
+            href: "/add",
+        },
+        {
+            id: "profile",
+            icon: "solar:user-circle-bold",
+            label: "Profile",
+            href: "/profile",
+        },
+        {
+            id: "socials",
+            icon: "fluent:people-community-16-regular",
+            label: "Socials",
+            href: "/community",
+        },
+        {
+            id: "explore",
+            icon: "ix:explore",
+            label: "Explore",
+            href: "/explore",
+        },
+    ];
+    const [navItems, setNavItems] = useState(initialNavItems);
 
     return (
         <Box
@@ -44,7 +56,7 @@ const [activeNav, setActiveNav] = useState("dashboard");
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                backgroundColor: "#FFF8F8",
+                backgroundColor: "#0a1129",
                 px: 3,
                 py: 2,
             }}
@@ -56,7 +68,8 @@ const [activeNav, setActiveNav] = useState("dashboard");
                     display: "flex",
                     justifyContent: "space-around",
                     alignItems: "center",
-                    backgroundColor: "#FFF8F8",
+                    backgroundColor: "rgba(255,255,255,0.08)", 
+                    backdropFilter: "blur(8px)", 
                     borderRadius: "20px",
                     p: 1.5,
                     boxShadow: "0px -4px 8px rgba(0,0,0,0.05)",
@@ -70,10 +83,10 @@ const [activeNav, setActiveNav] = useState("dashboard");
                 }}
             >
                 {navItems.map((item) => {
-                    const isActive = activeNav === item.id; 
+                    const isActive = router.pathname === item.href;
                     return (
                         <Box
-                            key={item.id} 
+                            key={item.id}
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
@@ -89,14 +102,13 @@ const [activeNav, setActiveNav] = useState("dashboard");
                                 transition: "all 0.3s ease",
                                 userSelect: "none",
                             }}
-                            onClick={() => setActiveNav(item.id)}
                         >
                             <Link href={item.href} passHref>
                                 <Icon
                                     icon={item.icon}
                                     width={26}
                                     height={26}
-                                    color={isActive ? "#fff" : "#B9B9B9"}
+                                    color={isActive ? "#FFF8F8" : "#B9B9B9"}
                                 />
                             </Link>
 

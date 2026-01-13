@@ -16,9 +16,11 @@ import OverdueCardList from "@/components/OverdueCard";
 import ActiveCardList from "@/components/ActiveCard";
 import Explore from "@/components/Explore";
 import { Icon } from "@iconify/react";
+import { useRouter } from "next/router";
 
 export default function Dashboard() {
     const [user, setUser] = useState<User | null>(null);
+    const router = useRouter();
     const hour = dayjs().hour();
     const greeting =
         hour < 12
@@ -113,7 +115,7 @@ export default function Dashboard() {
         }
     }, []);
 
-    if (!user) return null;
+    // if (!user) return null;
 
     console.log(user, "user");
     return (
@@ -155,7 +157,7 @@ export default function Dashboard() {
                             style={{
                                 fontSize: "1rem",
                                 fontWeight: 700,
-                                color: "#7c003d",
+                                color: "#fff",
                             }}
                         >
                             {greeting}, {user?.firstname || "Friend"} 👋
@@ -164,8 +166,9 @@ export default function Dashboard() {
 
                     <Box
                         component="button"
+                        onClick={() => router.push("/add")}
                         sx={{
-                            backgroundColor: "#0A1128",
+                            backgroundColor: "#fff",
                             color: "#fff",
                             width: 28,
                             height: 28,
@@ -188,6 +191,7 @@ export default function Dashboard() {
                     >
                         <Icon
                             icon={"material-symbols:add-rounded"}
+                            color="#0A1128"
                             fontSize={22}
                         />
                     </Box>
@@ -247,6 +251,7 @@ export default function Dashboard() {
                 <Box sx={{ mt: 3 }}>
                     {user?.habits?.overdueHabits?.length ? (
                         <ActiveCardList
+                            title="Daily Habits"
                             ActiveCardList={user?.habits?.activeHabits}
                             getHabitImage={getActiveHabitImage}
                         />

@@ -9,11 +9,13 @@ import ProgressStreak from "@/shared/ProgressStreak";
 interface ActiveCardListProps {
     ActiveCardList: Habit[];
     getHabitImage: (habit: Habit) => string;
+    title: string;
 }
 
 const ActiveCardList: React.FC<ActiveCardListProps> = ({
     ActiveCardList,
     getHabitImage,
+    title,
 }) => {
     const progress = 90
     const router = useRouter();
@@ -26,8 +28,8 @@ const ActiveCardList: React.FC<ActiveCardListProps> = ({
                 gap: 2,
             }}
         >
-            <Typography sx={{ color: "#A1879E", mb: 1, fontWeight: 600 }}>
-                Daily Habits
+            <Typography sx={{ color: "#777777", mb: 1, fontWeight: 600 }}>
+                {title}
             </Typography>
 
             {ActiveCardList.map((habit, index) => (
@@ -71,8 +73,7 @@ const ActiveCardList: React.FC<ActiveCardListProps> = ({
                                 content: '""',
                                 position: "absolute",
                                 inset: 0,
-                                background:
-                                    "linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.2))",
+                                backgroundColor: "rgba(0,0,0,0.9)",
                                 zIndex: 0,
                             },
                         }}
@@ -93,8 +94,7 @@ const ActiveCardList: React.FC<ActiveCardListProps> = ({
                                     fontSize: "0.8rem",
                                 }}
                             >
-                                Last done:{" "}
-                                {habit.duration}
+                                Last done: {habit.duration}
                             </Typography>
                         </Box>
                         <Box

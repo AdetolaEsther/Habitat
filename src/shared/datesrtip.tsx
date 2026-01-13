@@ -50,10 +50,10 @@ export default function DateStrip() {
                                     borderRadius: "26px",
                                     height: 50,
                                     backgroundColor: isSelected
-                                        ? "#0A1128"
+                                        ? "#fff"
                                         : "rgba(62, 98, 89, 0.15)",
 
-                                    color: isSelected ? "#fff" : "#0A1128",
+                                    color: isSelected ? "#0A1128" : "#fff",
                                     transition: "0.2s ease",
                                     minWidth: 20,
                                     display: "flex",
@@ -64,7 +64,7 @@ export default function DateStrip() {
                             >
                                 <Typography
                                     variant="body2"
-                                    sx={{ fontWeight: 600 }}
+                                    sx={{ fontWeight: 400 }}
                                 >
                                     {day.format("dd").toUpperCase()}
                                 </Typography>

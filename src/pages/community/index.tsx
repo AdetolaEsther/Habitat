@@ -6,33 +6,20 @@ import {
     Box,
     Typography,
     Stack,
-    Button,
     Card,
-    CardContent,
-    Switch,
     IconButton,
-    Grid,
-    MenuItem,
-    Menu,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import React, { useEffect, useState } from "react";
 import ProgressStreak from "@/shared/ProgressStreak";
+import { useRouter } from "next/router";
+import InviteCard from "@/shared/inviteCard";
+import ActiveSquadCard from "@/components/ActiveSquad";
+import Stories from "@/components/Stories";
 
-const ProfilePage = () => {
+const CommunityPage = () => {
     const [user, setUser] = useState<User | null>(null);
-    const stories = [
-        {
-            id: 1,
-            name: "Tunde",
-            avatar: "/freepik_assistant_1760596112435.png",
-        },
-        { id: 2, name: "Aisha", avatar: "/4871715.jpg" },
-        { id: 3, name: "Seun", avatar: "/62571.jpg" },
-        { id: 3, name: "Sean", avatar: "/7747195.jpg" },
-        { id: 3, name: "Agatha", avatar: "/profile3.jpg" },
-        { id: 3, name: "Sam", avatar: "/profile3.jpg" },
-    ];
+   
 
     const [selectedIcon, setSelectedIcon] = useState(
         "fluent-emoji-flat:red-heart"
@@ -95,67 +82,8 @@ const ProfilePage = () => {
                         </Stack>
                     </Stack>
 
-                    <Stack
-                        direction="row"
-                        spacing={2}
-                        sx={{
-                            mt: 2,
-                            overflowX: "auto",
-                            px: 1,
-                            "&::-webkit-scrollbar": { display: "none" },
-                        }}
-                    >
-                        <Stack alignItems="center" spacing={1}>
-                            <Box sx={{ position: "relative" }}>
-                                <Avatar
-                                    src="/profilee-picture.jpg"
-                                    sx={{
-                                        width: 80,
-                                        height: 80,
-                                        bgcolor: "#FFC1CC",
-                                        border: "2px solid #7c003d",
-                                    }}
-                                />
-                                <IconButton
-                                    sx={{
-                                        position: "absolute",
-                                        bottom: -2,
-                                        right: -2,
-                                        bgcolor: "#7c003d",
-                                        width: 28,
-                                        height: 28,
-                                    }}
-                                >
-                                    <Icon
-                                        icon="mdi:plus"
-                                        width={16}
-                                        height={16}
-                                        color="#fff"
-                                    />
-                                </IconButton>
-                            </Box>
-                            <Box sx={{ fontSize: 12 }}>Your story</Box>
-                        </Stack>
+                   <Stories/>
 
-                        {stories.map((story) => (
-                            <Stack
-                                key={story.id}
-                                alignItems="center"
-                                spacing={1}
-                            >
-                                <Avatar
-                                    src={story.avatar}
-                                    sx={{
-                                        width: 80,
-                                        height: 80,
-                                        border: "2px solid #ff005d", // active story ring
-                                        padding: "2px",
-                                    }}
-                                />
-                                <Box sx={{ fontSize: 12 }}>{story.name}</Box>
-                            </Stack>
-                        ))}
-                    </Stack>
                     <Card
                         sx={{
                             borderRadius: 4,
@@ -235,6 +163,9 @@ const ProfilePage = () => {
                                         fontWeight: 600,
                                         cursor: "pointer",
                                     }}
+                                    onClick={() => {
+                                        window.location.href = "/create-challenge";
+                                    }}
                                 >
                                     <Icon icon="mdi:rocket-launch" />
                                     Launch Now
@@ -267,7 +198,6 @@ const ProfilePage = () => {
                             View All
                         </Typography>
                     </Stack>
-
                     <Card
                         sx={{
                             borderRadius: 3,
@@ -479,174 +409,25 @@ const ProfilePage = () => {
                             </Typography>
                         </Stack>
                     </Stack>
-                    <Card
-                        sx={{
-                            borderRadius: 4,
-                            boxShadow: "none",
-                            p: 4,
-                            position: "relative",
-                            overflow: "hidden",
-                            backgroundColor: "rgba(255,255,255,0.08)",
-                            color: "#fff",
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                position: "absolute",
-                                right: -10,
-                                top: "40%",
-                                transform: "translateY(-50%)",
-                                opacity: 0.5,
-                            }}
-                        >
-                            <Image
-                                src="/vegetable.jpg" //
-                                alt="challenge image"
-                                width={200}
-                                height={400}
-                                style={{
-                                    objectFit: "cover",
-                                    borderRadius: 2,
-                                }}
-                            />
-                        </Box>
-
-                        <Stack spacing={2} sx={{ maxWidth: 420 }}>
-                            <Box
-                                sx={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 1,
-                                    px: 1.5,
-                                    py: 0.5,
-                                    borderRadius: 1,
-                                    bgcolor: "#7C003D",
-                                    fontSize: 12,
-                                    fontWeight: 600,
-                                    width: "fit-content",
-                                }}
-                            >
-                                INVITE
-                            </Box>
-
-                            <Box
-                                sx={{
-                                    fontSize: 18,
-                                    fontWeight: 700,
-                                    lineHeight: 1.2,
-                                }}
-                            >
-                                No sugar November{" "}
-                            </Box>
-
-                            <Box
-                                sx={{
-                                    fontSize: 15,
-                                    color: "rgba(255,255,255,0.85)",
-                                }}
-                            >
-                                Alex invited you to join this Challenge
-                            </Box>
-
-                            <Box sx={{ display: "flex", gap: 2 }}>
-                                <Button
-                                    sx={{
-                                        textTransform: "none",
-                                        px: 2,
-                                        py: 1.2,
-                                        borderRadius: 3,
-                                        backgroundColor: "#7C003D",
-                                        color: "#fff",
-                                        fontWeight: 600,
-                                    }}
-                                >
-                                    Accept{" "}
-                                </Button>
-
-                                <Button
-                                    sx={{
-                                        textTransform: "none",
-                                        px: 2,
-                                        py: 1.2,
-                                        borderRadius: 3,
-                                        color: "#fff",
-                                        fontWeight: 600,
-                                        border: "2px solid gray",
-                                    }}
-                                >
-                                    Decline
-                                </Button>
-                            </Box>
-                        </Stack>
-                    </Card>
-                    <Card
-                        sx={{
-                            borderRadius: 4,
-                            boxShadow: "none",
-                            p: 4,
-                            position: "relative",
-                            overflow: "hidden",
-                            backgroundColor: "rgba(255,255,255,0.08)",
-                            color: "#fff",
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                position: "absolute",
-                                right: -10,
-                                top: "40%",
-                                transform: "translateY(-50%)",
-                                opacity: 0.5,
-                            }}
-                        >
-                            <Image
-                                src="/vegetable.jpg" //
-                                alt="challenge image"
-                                width={200}
-                                height={400}
-                                style={{
-                                    objectFit: "cover",
-                                    borderRadius: 2,
-                                }}
-                            />
-                        </Box>
-
-                        <Stack spacing={2} sx={{ maxWidth: 420 }}>
-                            <Box
-                                sx={{
-                                    fontSize: 18,
-                                    fontWeight: 700,
-                                }}
-                            >
-                                No sugar November{" "}
-                            </Box>
-
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: 1,
-                                    color: "rgba(255,255,255,0.85)",
-                                }}
-                            >
-                                <Icon
-                                    icon="pepicons-pop:checkmark-filled"
-                                    width={26}
-                                    height={16}
-                                    color="#7c003d"
-                                />
-                                35 % Team Goal
-                            </Box>
-
-                            <Box sx={{ display: "flex", gap: 2 }}>
-                                <ProgressStreak progress={5} streak={34}/>
-                            </Box>
-                        </Stack>
-                    </Card>
+                    <InviteCard
+                        title="No Sugar November"
+                        description="Alex invited you to join this challenge"
+                        imageSrc="/vegetable.jpg"
+                        onAccept={() => console.log("Accepted")}
+                        onDecline={() => console.log("Declined")}
+                    />
+                    <ActiveSquadCard
+                        title="No Sugar November"
+                        progressLabel="35% Team Goal"
+                        imageSrc="/vegetable.jpg"
+                        progress={5}
+                        streak={34}
+                        id={6}
+                    />
                 </Stack>
             </Box>
         </Layout>
     );
 };
 
-export default ProfilePage;
+export default CommunityPage;

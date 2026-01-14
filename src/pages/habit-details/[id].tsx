@@ -50,6 +50,7 @@ export default function HabitDetails() {
                         justifyContent: "center",
                     }}
                 >
+                    
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         style={{ borderRadius: 24, overflow: "hidden" }}

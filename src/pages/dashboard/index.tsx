@@ -2,9 +2,7 @@
 import React, { useEffect, useState } from "react";
 import {
     Box,
-    Typography,
     Avatar,
-    CircularProgress,
     Button,
 } from "@mui/material";
 import dayjs from "dayjs";
